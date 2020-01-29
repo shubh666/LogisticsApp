@@ -222,11 +222,7 @@ button {
 		<form style="align-content: center;" class="registration" method="post" action="packageRegister">
   <h1> Package Registration!</h1>
 
-			<label class="pure-material-textfield-outlined">
-    		 <span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;</span>
-     <input placeholder=" Package Id"  name="packageId" type="text" required>
-     
-  </label>
+		
   
   <label class="pure-material-textfield-outlined">
     	 <span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;</span>

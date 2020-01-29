@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,114 +14,164 @@
 
 
 <style>
-
 body {
-  animation: colorchange 50s;
-  -webkit-animation: colorchange 50s;
-  animation-iteration-count: infinite;
+	animation: colorchange 50s;
+	-webkit-animation: colorchange 50s;
+	animation-iteration-count: infinite;
 }
 
-@keyframes colorchange{
-  0%{background-color:#45a3e5}
-  17%{background-color:#3cc}
-  34%{background-color:#66bf39}
-  51%{background-color:#ffa602}
-  61%{background-color:#eb670f}
-  84%{background-color:#f35}
-  90%{background-color:#864cbf}
-  100%{background-color:#45a3e5}
+@
+keyframes colorchange { 0%{
+	background-color: #45a3e5
 }
 
-@-webkit-keyframes colorchange{
-  0%{background-color:#45a3e5}
-  17%{background-color:#3cc}
-  34%{background-color:#66bf39}
-  51%{background-color:#ffa602}
-  61%{background-color:#eb670f}
-  84%{background-color:#f35}
-  90%{background-color:#864cbf}
-  100%{background-color:#45a3e5}
+17%{
+background-color
+:
+#3cc
+}
+34%{
+background-color
+:
+#66bf39
+}
+51%{
+background-color
+:
+#ffa602
+}
+61%{
+background-color
+:
+#eb670f
+}
+84%{
+background-color
+:
+#f35
+}
+90%{
+background-color
+:
+#864cbf
+}
+100%{
+background-color
+:
+#45a3e5
+}
+}
+@
+-webkit-keyframes colorchange { 0%{
+	background-color: #45a3e5
 }
 
+17%{
+background-color
+:
+#3cc
+}
+34%{
+background-color
+:
+#66bf39
+}
+51%{
+background-color
+:
+#ffa602
+}
+61%{
+background-color
+:
+#eb670f
+}
+84%{
+background-color
+:
+#f35
+}
+90%{
+background-color
+:
+#864cbf
+}
+100%{
+background-color
+:
+#45a3e5
+}
+}
 .button {
-  background-color: red;
-  border: none;
-  color: white;
-  padding: 8px 14px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-}		
-
-
+	background-color: red;
+	border: none;
+	color: white;
+	padding: 8px 14px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+}
 </style>
 
 
 
 <script type="text/javascript">
-function Validate() {
-    var password = document.getElementById("txtPassword").value;
-    var confirmPassword = document.getElementById("txtConfirmPassword").value;
-    if (password != confirmPassword) {
-        alert("Passwords do not match.");
-        document.getElementById("txtPassword").value="";
-        document.getElementById("txtConfirmPassword").value="";
-        return false;
-        
-    }
-    return true;
-}
+	function Validate() {
+		var password = document.getElementById("txtPassword").value;
+		var confirmPassword = document.getElementById("txtConfirmPassword").value;
+		if (password != confirmPassword) {
+			alert("Passwords do not match.");
+			document.getElementById("txtPassword").value = "";
+			document.getElementById("txtConfirmPassword").value = "";
+			return false;
+
+		}
+		return true;
+	}
 </script>
-
-
-
-
 
 </head>
 
-
-    
-
 <body>
-	
+
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-3"></div>
 			<div class="col-6">
 
 				<form method="post" action="forgetPassword">
-					
+
 					<div class="form-group">
-						<label for="exampleInputPassword1">UserId</label> 
-						<input
-							type="text" name="userId" class="form-control" id="exampleInputPassword1">
+						<label for="exampleInputPassword1">UserId</label> <input
+							type="text" name="userId" class="form-control"
+							id="exampleInputPassword1">
 					</div>
-				
+
 					<div class="form-group">
-						<label for="exampleInputPassword1">UserName</label> 
-						<input
-							type="text" name="userName" class="form-control" id="exampleInputPassword1">
+						<label for="exampleInputPassword1">UserName</label> <input
+							type="text" name="userName" class="form-control"
+							id="exampleInputPassword1">
 					</div>
-					
+
 					<div class="form-group">
-						<label for="exampleInputPassword1">New Password</label> 
-						<input
-							type="password" name="userPassword" class="form-control" id="txtPassword">
+						<label for="exampleInputPassword1">New Password</label> <input
+							type="password" name="userPassword" class="form-control"
+							id="txtPassword">
 					</div>
-					
+
 					<div class="form-group">
-						<label for="exampleInputPassword1">Confirm Password</label> 
-						<input
+						<label for="exampleInputPassword1">Confirm Password</label> <input
 							type="password" class="form-control" id="txtConfirmPassword">
 					</div>
-					
-					<button type="submit" id="btnSubmit" class="button" onclick="return Validate()">Submit</button>
-					
+
+					<button type="submit" id="btnSubmit" class="button"
+						onclick="return Validate()">Submit</button>
+
 				</form>
-				<a href ="index"><button class="button">Back</button></a>
+				<a href="index"><button class="button">Back</button></a>
 			</div>
 		</div>
 	</div>

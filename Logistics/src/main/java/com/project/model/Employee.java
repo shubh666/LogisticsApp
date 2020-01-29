@@ -1,7 +1,7 @@
 package com.project.model;
 
-public class Employee {
-	
+public class Employee 
+{	
 	private int employeeId;
 	private String employeeName;
 	private String employeePhone;

@@ -25,8 +25,8 @@ public class PackageDaoImple implements PackageDao {
 	{
 			try 
 			{
-				String sql = "INSERT INTO package(packageid,packageweight,source,destination,amount) VALUES (?, ?, ?, ?, ?)";
-				jdbcTemplate.update(sql, pkg.getPackageId(),pkg.getPackageWeight(),pkg.getSorce(),pkg.getDestination(),pkg.getAmount());
+				String sql = "INSERT INTO package(packageweight,source,destination,amount) VALUES (?, ?, ?, ?)";
+				jdbcTemplate.update(sql, pkg.getPackageWeight(),pkg.getSorce(),pkg.getDestination(),pkg.getAmount());
 				return true;
 			}
 			catch(Exception e) 

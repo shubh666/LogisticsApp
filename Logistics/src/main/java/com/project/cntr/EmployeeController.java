@@ -82,6 +82,8 @@ public class EmployeeController
 	{
 		this.empServ.create(emp);
 		ModelAndView mv = new ModelAndView();
+		Iterable<Employee> listEmployee = empServ.findAll();
+		mv.addObject("listEmployee", listEmployee);
 		mv.setViewName("employee");
 		return mv;
 	}

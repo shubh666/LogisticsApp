@@ -25,7 +25,7 @@ public class UserDaoImple implements UserDao {
 	@Override
 	public boolean login(User user) {
 		
-		String sql="select * from user where username=? and decode(password,'mypassword') = ?";
+		String sql="select * from user where username=? and aes_decrypt(password,'mypassword') = ?";
 		System.out.print(sql);
 		User u=jdbcTemplate.queryForObject(sql, new Object[] {user.getUserName(),user.getUserPassword()}, new RowMapper<User>() {
 
@@ -50,8 +50,8 @@ public class UserDaoImple implements UserDao {
 	public boolean create(User user) {
 		try
 		{
-			String sql = "INSERT INTO user VALUES (?, ?, ?, ?, ?)";
-			jdbcTemplate.update(sql, user.getUserId(),user.getUserName(),user.getUserPassword(),user.getEmailId(),user.getPhone());
+			String sql = "INSERT INTO user(username,password,email,phone) VALUES (?, aes_encrypt(?,'mypassword'),?,?)";
+			jdbcTemplate.update(sql, user.getUserName(),user.getUserPassword(),user.getEmailId(),user.getPhone());
 		
 			return true;
 		}
@@ -67,7 +67,7 @@ public class UserDaoImple implements UserDao {
 	public boolean resetPassword(User user) {
 				
 		try {
-				String sql = "update user set password=encode(?,'mypassword') where userid=? and username=?";
+				String sql = "update user set password=aes_encrypt(?,'mypassword') where userid=? and username=?";
 				int i=jdbcTemplate.update(sql, user.getUserPassword(),user.getUserId(),user.getUserName());
 			
 				if(i==0)

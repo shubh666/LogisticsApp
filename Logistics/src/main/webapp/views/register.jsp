@@ -367,166 +367,175 @@ function phonenumber(inputtxt)
 
 
 
- 
+
 <html>
-	<head>
-	
-	<style>
-	
-	/* Material Customization */
-:root {
-    --pure-material-primary-rgb: 255, 191, 0;
-    --pure-material-onsurface-rgb: 0, 0, 0;
+<head>
+
+<style>
+
+/* Material Customization */
+:root { -
+	-pure-material-primary-rgb: 255, 191, 0; -
+	-pure-material-onsurface-rgb: 0, 0, 0;
 }
 
 body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    background: url("https://media.gettyimages.com/photos/paintings-on-the-trucks-on-the-road-in-rajasthan-on-march-02-2017-in-picture-id946520298?s=2048x2048");
- background-size: 1200px 550px;
-    /*  background-position: center; */
-  background-repeat: no-repeat;
-  height: 100%;
-  weidth: 100%;
- 	
- 
- }
- img{
- 
- 
- }
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+	background:
+		url("https://media.gettyimages.com/photos/paintings-on-the-trucks-on-the-road-in-rajasthan-on-march-02-2017-in-picture-id946520298?s=2048x2048");
+	background-size: 1200px 550px;
+	/*  background-position: center; */
+	background-repeat: no-repeat;
+	height: 100%;
+	weidth: 100%;
+}
+
+img {
+	
+}
 
 .registration {
-    position: relative;
-    border-radius: 8px;
-    padding: 16px 48px;
-    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
-    overflow: hidden;
-    background-color: white;
+	position: relative;
+	border-radius: 8px;
+	padding: 16px 48px;
+	box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0
+		rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+	overflow: hidden;
+	background-color: white;
 }
 
 h1 {
-    margin: 32px 0;
-    font-family: "Roboto", "Segoe UI", BlinkMacSystemFont, system-ui, -apple-system;
-    font-weight: normal;
-    text-align: center;
+	margin: 32px 0;
+	font-family: "Roboto", "Segoe UI", BlinkMacSystemFont, system-ui,
+		-apple-system;
+	font-weight: normal;
+	text-align: center;
 }
 
-.registration > label {
-    display: block;
-    margin: 24px 0;
-    width: 320px;
+.registration>label {
+	display: block;
+	margin: 24px 0;
+	width: 320px;
 }
 
 a {
-    color: rgb(var(--pure-material-primary-rgb));
-    text-decoration: none;
+	color: rgb(var(- -pure-material-primary-rgb));
+	text-decoration: none;
 }
 
 a:hover {
-    text-decoration: underline;
+	text-decoration: underline;
 }
 
 button {
-    display: block !important;
-    margin: 32px auto;
+	display: block !important;
+	margin: 32px auto;
 }
 
-.done,
-.progress {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-    visibility: hidden;
+.done, .progress {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-color: white;
+	visibility: hidden;
 }
 
 .done {
-    transition: visibility 0s 1s;
+	transition: visibility 0s 1s;
 }
 
-.signed > .done {
-    visibility: visible;
+.signed>.done {
+	visibility: visible;
 }
 
-.done > a {
-    display: inline-block;
-    text-decoration: none;
+.done>a {
+	display: inline-block;
+	text-decoration: none;
 }
 
 .progress {
-    opacity: 0;
+	opacity: 0;
 }
 
-.signed > .progress {
-    animation: loading 4s;
+.signed>.progress {
+	animation: loading 4s;
 }
 
-@keyframes loading {
-    0% {
-        visibility: visible;
-    }
-    12.5% {
-        opacity: 0;
-    }
-    25% {
-        opacity: 1;
-    }
-    87.5% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
+@
+keyframes loading { 0% {
+	visibility: visible;
 }
 
-.left-footer,
-.right-footer {
-    position: fixed;
-    padding: 14px;
-    bottom: 14px;
-    color: #555;
-    background-color: #eee;
-    font-family: "Roboto", "Segoe UI", BlinkMacSystemFont, system-ui, -apple-system;
-    font-size: 14px;
-    line-height: 1.5;
-    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+12
+.5 % {
+	opacity: 0;
+}
+
+25%
+{
+opacity
+:
+ 
+1;
+}
+87
+.5 % {
+	opacity: 1;
+}
+
+100%
+{
+opacity
+:
+ 
+0;
+}
+}
+.left-footer, .right-footer {
+	position: fixed;
+	padding: 14px;
+	bottom: 14px;
+	color: #555;
+	background-color: #eee;
+	font-family: "Roboto", "Segoe UI", BlinkMacSystemFont, system-ui,
+		-apple-system;
+	font-size: 14px;
+	line-height: 1.5;
+	box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0
+		rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
 
 .left-footer {
-    left: 0;
-    border-radius: 0 4px 4px 0;
-    text-align: left;
+	left: 0;
+	border-radius: 0 4px 4px 0;
+	text-align: left;
 }
 
 .right-footer {
-    right: 0;
-    border-radius: 4px 0 0 4px;
-    text-align: right;
+	right: 0;
+	border-radius: 4px 0 0 4px;
+	text-align: right;
 }
 
-.left-footer > a,
-.right-footer > a {
-    color: black;
+.left-footer>a, .right-footer>a {
+	color: black;
 }
 
-.left-footer > a:hover,
-.right-footer > a:hover {
-    text-decoration: underline;
+.left-footer>a:hover, .right-footer>a:hover {
+	text-decoration: underline;
 }
-	
-	
-	</style>
-	
-					<script>
+</style>
+
+<script>
 					
 					// JavaScript is used for toggling loading state
 					var form = document.querySelector('form');
@@ -536,80 +545,67 @@ button {
 					};
 					
 					</script>
-	
-	</head>
 
-		<body class="img">
-		
-		
-		
-		<form style="align-content: center;" class="registration" action="register" method="post">
-  <h1> Register Yourself!</h1>
+<script type="text/javascript">
+function Validate() {
+    var password = document.getElementById("txtPassword").value;
+    var confirmPassword = document.getElementById("txtConfirmPassword").value;
+    if (password != confirmPassword) {
+        alert("Passwords do not match.");
+        document.getElementById("txtPassword").value="";
+        document.getElementById("txtConfirmPassword").value="";
+        return false;
+        
+    }
+    return true;
+}
+</script>
 
-			<label class="pure-material-textfield-outlined">
-    		 <span></span>
-     <input placeholder=" User Id" type="text" required>
-     
-  </label>
-  
-  <label class="pure-material-textfield-outlined">
-    	 <span></span>
-     <input placeholder="User Name " type="text" required>
-     
-  </label>
-  
-  <label class="pure-material-textfield-outlined">
-   	
-   	 <span></span>
-    <input placeholder="Password " type="password" required>
-   
-  </label>
-  
-  <label class="pure-material-textfield-outlined">
-    
-     <span></span>
-    <input placeholder=" Confirm Password" type="password" required>
-   
-  </label>
-		
-  <label class="pure-material-textfield-outlined">
-     
-      <span></span>
-     <input placeholder=" Email" type="email" required>
-     
-  </label>
-  
-			<label class="pure-material-textfield-outlined">
-     	<span></span>
-     <input placeholder="Phone " type="text" required>
-      
-  </label>
+</head>
 
- 
+<body class="img">
 
- 
+	<form style="align-content: center;" class="registration"
+		action="register" method="post">
+		<h1>Register Yourself!</h1>
 
-  <button class="pure-material-button-contained" type="submit">Sign Up</button>
+		<label class="pure-material-textfield-outlined"> <span></span>
+			<input placeholder="User Name " type="text" name="userName" required>
 
-  <div class="done">
-    <h1>👌 You're all set!</h1>
-    <a class="pure-material-button-text" href="javascript:window.location.reload(true)">Again</a>
-  </div>
-  <div class="progress">
-    <progress class="pure-material-progress-circular" />
-  </div>
-</form>
+		</label> <label class="pure-material-textfield-outlined"> <span></span>
+			<input placeholder="Password " type="password" name="userPassword"
+			required>
 
+		</label> <label class="pure-material-textfield-outlined"> <span></span>
+			<input placeholder=" Confirm Password" type="password"
+			id="txtConfirmPassword" required>
 
-		
-		
-		
-		</body>
+		</label> <label class="pure-material-textfield-outlined"> <span></span>
+			<input placeholder=" Email" type="email" name="emailId" required>
+
+		</label> <label class="pure-material-textfield-outlined"> <span></span>
+			<input placeholder="Phone " type="text" name="phone" required>
+
+		</label>
+
+		<button class="pure-material-button-contained" type="submit">Sign
+			Up</button>
+
+		<div class="done">
+			<h1>👌 You're all set!</h1>
+			<a class="pure-material-button-text"
+				href="javascript:window.location.reload(true)">Again</a>
+		</div>
+		<div class="progress">
+			<progress class="pure-material-progress-circular" />
+		</div>
+	</form>
+
+</body>
 
 </html>
 
- 
- 
- 
- 
-  
+
+
+
+
