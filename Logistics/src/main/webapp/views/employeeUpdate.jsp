@@ -106,6 +106,7 @@ nav ul li a:hover {
 			
 		
 				<form action="employee" method="post">
+				
 				<c:forEach var="employee" items="${listEmployee}" varStatus="status">
 				
 					<div class="form-group">
@@ -149,7 +150,7 @@ nav ul li a:hover {
 					
 					
 				</c:forEach>
-																
+				<input type="hidden" name="deleteButton" value="false">											
 				<button type="submit" class="btn btn-primary">Submit</button>
 				</form>
 				

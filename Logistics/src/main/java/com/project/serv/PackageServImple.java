@@ -82,6 +82,9 @@ public class PackageServImple implements PackageServ {
 		return packagedao.historyAll();
 	}
 	
-	
-
+	@Override
+	public String getVno(Package p) {
+		// TODO Auto-generated method stub
+		return packagedao.getVno(p);
+	}
 }

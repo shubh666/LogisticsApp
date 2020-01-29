@@ -28,6 +28,8 @@ public class HomeController {
 	@Autowired
 	private UserServ userServ;
 
+	private Object msg;
+
 	
 	@GetMapping("/")
 	public ModelAndView signinPage() 
@@ -46,11 +48,14 @@ public class HomeController {
 			if(auth) {
 				session.setAttribute("uname",user.getUserName());
 				session.setAttribute("uPassword",user.getUserPassword());
+				mv.addObject("msg","msg");
 				mv.setViewName("home");
 			} else {
-				String str="Enter Valid Credentials";
-				mv.addObject("msg",str);
+				//String str="Enter Valid Credentials";
+				mv.addObject("msg","msg");
+				
 				mv.setViewName("index");
+				return mv;
 			}
 			
 			return mv;

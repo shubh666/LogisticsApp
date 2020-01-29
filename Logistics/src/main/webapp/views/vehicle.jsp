@@ -311,10 +311,10 @@ $(window).on("load resize ", function() {
 </section>
 
 	
-	<div style="display: grid; align-content: center;justify-content: center;">
-			<a href="vehicleRegister"><button class="button" style="border: 1cm;" ><span>Vehicle Registration</span></button></a></div>
+	<div >
+			<a href="vehicleRegister"><button class="button" style="border: 1cm;margin-left: 30%;" ><span>Vehicle Registration</span></button></a>
  
-    <div style="display: grid; align-content: center;justify-content: center;">
+    
 			<a href="home"><button class="button" style="border: 1cm;" ><span>Back</span></button></a></div>
     
 

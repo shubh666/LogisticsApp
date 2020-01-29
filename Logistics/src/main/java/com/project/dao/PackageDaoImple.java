@@ -186,7 +186,11 @@ public class PackageDaoImple implements PackageDao {
 			 */			
 			String str="Delivered";
 			String sql2= "update package set status = ? ,deliveryDate=now() where packageId = ?";
+			String sql3= "update vehicle set status = 'Available' where vehicleno = ?";
+			String sql4= "update employee set status = 'Available' where employeeId = ?";
 			jdbcTemplate.update(sql2, str, pkg.getPackageId());
+			jdbcTemplate.update(sql3, pkg.getVehicleId());
+			jdbcTemplate.update(sql4, pkg.getEmployeeId());
 			return true;
 	
 		}
@@ -244,5 +248,12 @@ public class PackageDaoImple implements PackageDao {
 			}	
 		});
 		return list;
+	}
+
+
+	@Override
+	public String getVno(Package p) {
+		String s1 = p.getVehicleId();
+		return s1;
 	}
 }

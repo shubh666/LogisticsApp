@@ -39,7 +39,6 @@ public class PackageController {
 	    mv.addObject("listPackage", listPackage);
 	    mv.setViewName("package");
 	    return mv;
-	  
 	  }
 	 
 	
@@ -72,7 +71,6 @@ public class PackageController {
 		return mv;
 	}
 
-	// PackageStatusController
 
 	@GetMapping("/status")
 	public ModelAndView packageStatusPage() {
@@ -83,6 +81,7 @@ public class PackageController {
 		return model;
 	}
 
+	
 	@PostMapping("/status")
 	public ModelAndView packageStatusPageAfter(Package pkg) {
 		ModelAndView model = new ModelAndView();
@@ -94,14 +93,17 @@ public class PackageController {
 		return model;
 	}
 
-	@GetMapping("/location")
-	public ModelAndView location() {
-
+	
+	
+	@PostMapping("/location")
+	public ModelAndView location(Package p) 
+	{
 		ModelAndView model = new ModelAndView();
-		Iterable<Package> listPackageStatus = packageServ.findAll();
-		model.addObject("listPackageStatus", listPackageStatus);
+		//Iterable<Package> listPackageStatus = packageServ.findAll();
+		//model.addObject("listPackageStatus", listPackageStatus);
+		String vid = packageServ.getVno(p);
+		model.addObject("vehicleId", vid);	
 		model.setViewName("location");
-
 		return model;
 
 	}
@@ -119,18 +121,24 @@ public class PackageController {
 	}
 
 	
-	 @GetMapping("/delivered")
-	 public ModelAndView delivered(Package pkg) {
-	  
+	@GetMapping("/delivered")
+	 public ModelAndView delivered2(Package pkg) 
+	 { 
+		  ModelAndView model = new ModelAndView();
+		  Iterable<Package> listPackageStatus = packageServ.showDelivered(); 
+		  model.addObject("listPackageStatus", listPackageStatus);
+		  model.setViewName("delivered");
+		  return model;
+	  }
+	
+	 @PostMapping("/delivered")
+	 public ModelAndView delivered(Package pkg) 
+	 { 
 		  ModelAndView model = new ModelAndView();
 		  this.packageServ.changeDelivered(pkg); 
 		  Iterable<Package> listPackageStatus = packageServ.showDelivered(); 
 		  model.addObject("listPackageStatus", listPackageStatus);
 		  model.setViewName("delivered");
 		  return model;
-	  
 	  }
-	  
-	 
-
 }

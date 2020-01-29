@@ -287,11 +287,11 @@ nav ul li a:hover {
 </section>
 
 	
-			<div style="display: grid; align-content: center;justify-content: center;">
-			<a href="employeeRegister"><button class="button" style="border: 1cm;" ><span>Employee Registration</span></button></a></div>
+			<div style=" justify-content: center;">
+			<a href="employeeRegister"><button class="button" style="border: 1cm; margin-left: 30%;" ><span>Employee Registration</span></button></a>
 			
-			<div style="display: grid; align-content: center;justify-content: center;">
-			<div><a href="home"><button class="button">back</button></a></div>
+			
+			<a href="home"><button class="button">back</button></a>
 			</div>
 
 			

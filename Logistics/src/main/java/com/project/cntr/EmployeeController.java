@@ -1,11 +1,13 @@
 package com.project.cntr;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.project.model.Employee;
 import com.project.model.Vehicle;
 import com.project.serv.EmployeeServ;
@@ -28,12 +30,19 @@ public class EmployeeController
 	}
 	
 	@PostMapping("/employee")
-	public ModelAndView changeEmployee(Employee employeeStatus) 
+	public ModelAndView changeEmployee(Employee employeeStatus, @RequestParam("deleteButton") boolean str, HttpServletRequest request) 
 	{
+		
+		System.out.println();
 		ModelAndView mv = new ModelAndView();
-		this.empServ.updateEmployeeStatus(employeeStatus);
-		/* String app = request.getParameter("deleteButton"); */ 		
-		this.empServ.changeEmployeeStatus(employeeStatus);
+		if(str)
+		{
+			this.empServ.changeEmployeeStatus(employeeStatus);
+		}
+		else
+		{
+			this.empServ.updateEmployeeStatus(employeeStatus); 		
+		}
 		Iterable<Employee> listEmployee = empServ.findAll();
 		mv.addObject("listEmployee", listEmployee);
 		mv.setViewName("employee");

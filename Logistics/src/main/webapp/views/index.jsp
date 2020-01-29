@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,10 +10,7 @@
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-	crossorigin="anonymous">
-	
-	
-	
+	crossorigin="anonymous">	
 	
 	<style>
 	
@@ -79,18 +77,42 @@ input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgb
 	
 	
 	<script>  
-function validateform(){  
-var userName=document.myform.userName.value;  
-var userPassword=document.myform.userPassword.value;  
-  
-if ("userName"==null || "userName"==""){  
-  window.alert("Name can't be blank");  
-  return false;  
-}else if(userPassword.length<4){  
-  window.alert("Password must be at least 4 characters long.");  
-  return false;  
-  }  
-}  
+
+
+
+
+function InvalidMsg(textbox) { 
+	  
+    if (textbox.value === '') { 
+        textbox.setCustomValidity 
+              ('Entering an user id is necessary!'); 
+    } else if (textbox.validity.typeMismatch) { 
+        textbox.setCustomValidity 
+              ('Please enter an user id which is valid!'); 
+    } else { 
+        textbox.setCustomValidity(''); 
+    } 
+
+    return true; 
+} 
+
+
+function InvalidPass(textbox) { 
+	  
+    if (textbox.value === '') { 
+        textbox.setCustomValidity 
+              ('without password you can not enter'); 
+    } else if (textbox.validity.typeMismatch) { 
+        textbox.setCustomValidity 
+              ('Please enter password which is valid!'); 
+    } else { 
+        textbox.setCustomValidity(''); 
+    } 
+
+    return true; 
+} 
+
+
 </script> 
 	
 	
@@ -138,8 +160,26 @@ if ("userName"==null || "userName"==""){
 	<h1>Login</h1>
     <form action="/" method="post" name="myform">
     	
-    	<input type="text" name="userName" placeholder="Username" required="required" />
-        <input type="password" name="userPassword" placeholder="Password" required="required" />
+    <h1> ${msg} </h1>
+
+    	
+    	
+    <!-- 	<input type="text" name="userName" placeholder="Username" required="required" /> -->
+    	
+    	
+    	<input id="email" oninvalid="InvalidMsg(this);" 
+	placeholder="user id"                   oninput="InvalidMsg(this);" name="userName" 
+                   type="text" required="required" /> 
+        
+        
+        
+        <!-- <input type="password" name="userPassword" placeholder="Password" required="required" /> -->
+        
+        
+        <input id="email" oninvalid="InvalidPass(this);" 
+                   oninput="InvalidPass(this);" placeholder="password" name="userPassword" 
+                   type="password" required="required" /> 
+        
         <button type="submit" class="btn btn-primary btn-block btn-large" onclick="validateform()">Let me in.</button><a href="forgetPassword">forget Password?</a> 
         <br>
         <a href="register"><input type="button" value="Register" class="btn btn-primary btn-block btn-large"></a>

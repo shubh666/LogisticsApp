@@ -28,4 +28,6 @@ public interface PackageDao {
 	public Iterable<Package> showDelivered();
 	
 	public Iterable<Package> historyAll();
+
+	public String getVno(Package p);
 }

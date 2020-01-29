@@ -32,4 +32,6 @@ import com.project.model.Vehicle;
 	public Iterable<Package> showDelivered();
 	
 	public Iterable<Package> historyAll();
+
+	public String getVno(Package p);
 }

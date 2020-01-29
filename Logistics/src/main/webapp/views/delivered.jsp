@@ -264,7 +264,7 @@ $(window).on("load resize ", function() {
 
 	<div class="buttons" style="display: grid; align-content: center;justify-content: center;">
 	<div class="action_btn">
-	<a href="status"><button class="button" style="border: 1cm;" >Back</button></a>
+	<a href="home"><button class="button" style="border: 1cm;" >Back</button></a>
 
 	
 			<a href="home"><button class="button" style="border: 1cm;" >Home</button></a>

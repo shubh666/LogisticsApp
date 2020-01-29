@@ -256,12 +256,20 @@ nav ul li a:hover {
 				<td>${packageStatus.packageId}</td>
 				<td>${packageStatus.vehicleId}</td>
 				<td>${packageStatus.employeeId}</td>
-				
-				<td><a href="location"><input class="button" type="button" value="locate"></a></td>
-				<td><a href="delivered?packageId=${packageStatus.packageId}"><input class="button" type="button" value="Deliver"></a></td>
-				<!-- <a href="package"><input type="button" value="use"></a></td> -->
-				
-
+				<td>
+					<form method="post" action="location" > 			
+					<input type="hidden" name="vehicleId" value="${packageStatus.vehicleId}">
+					<input class="button" type="submit" value="location">
+					</form> 
+				</td>
+				<td>
+					<form method="post" action="delivered" > 			
+					<input type="hidden" name="packageId" value="${packageStatus.packageId}">
+					<input type="hidden" name="vehicleId" value="${packageStatus.vehicleId}">
+					<input type="hidden" name="employeeId" value="${packageStatus.employeeId}">
+					<input class="button" type="submit" value="delivered">
+					</form> 
+				</td>
 			</tr>
 		</c:forEach>
         

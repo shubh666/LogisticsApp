@@ -39,9 +39,9 @@ public class EmployeeDaoImple implements EmployeeDao {
 	public Iterable<Employee> findAll() {
 	
 		String str="Removed";
-		String sql="SELECT * FROM employee where status!=?";
+		String sql="SELECT * FROM employee where status != ?";
 		
-		List<Employee> list = jdbcTemplate.query(sql,  new Object[] {str} , new RowMapper<Employee>() {
+		List<Employee> list = jdbcTemplate.query(sql, new Object[] {str},new RowMapper<Employee>() {
 
 			@Override
 			public Employee mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -119,7 +119,7 @@ public class EmployeeDaoImple implements EmployeeDao {
 		 
 		try {
 				
-				String sql = "update employee set employeeName=?,employeeSalary=?,employeeLicense=?,deptid=? where employeeid=? ";
+				String sql = "update employee set employeeName=?,  employeePhone=?,employeeSalary=?,employeeLicense=?,deptid=? where employeeid=? ";
 				jdbcTemplate.update(sql, emp.getEmployeeName() , emp.getEmployeePhone() , emp.getEmployeeSalary(), emp.getEmployeeLicense() , emp.getDepartmentId() ,emp.getEmployeeId());
 			
 				return true;	

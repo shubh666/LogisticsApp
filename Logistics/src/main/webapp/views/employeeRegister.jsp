@@ -5,7 +5,7 @@
     "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri = "http://www.springframework.org/tags/form" prefix = "form"%>
-<!DOCTYPE html>
+
 <html>
 <head>
 <meta charset="UTF-8">
@@ -182,7 +182,79 @@ button {
 			</c:if>
 			
 			
-	<%-- <div class="container-fluid">
+	
+					
+						
+		<form style="align-content: center;" class="registration" action="employee" method="post">
+  <h1> Employee Registration!</h1>
+
+			<label class="pure-material-textfield-outlined">
+    		 <span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;</span>
+     <input placeholder=" Employee Id" name="employeeId" type="text" required>
+     
+  </label>
+  
+  <label class="pure-material-textfield-outlined">
+    	 <span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;</span>
+   <input
+							type="text" placeholder="Employee Name" name="employeeName"  type="text" required>
+     
+  </label>
+  
+  <label class="pure-material-textfield-outlined">
+   	
+   	 <span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;</span>
+   <input type="text" placeholder="Phone no" name="employeePhone" maxlength="10" pattern="[0-9]{10}" required>
+   
+  </label>
+  
+  <label class="pure-material-textfield-outlined">
+    
+     <span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;</span>
+ <input type="date" placeholder="Date Of joining" name="employeeDoj" required>
+   
+  </label>
+		
+  <label class="pure-material-textfield-outlined">
+     
+      <span>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</span>
+   <input type="text" placeholder="Employee Salary" name="employeeSalary" required>
+     
+  </label>
+  
+			<label class="pure-material-textfield-outlined">
+     	<span>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</span>
+   <input type="text" placeholder="licence No" name="employeeLicense" required>
+      
+  </label>
+  
+  <label class="pure-material-textfield-outlined">
+     	<span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;</span>
+   <input type="text" placeholder="Department Id" name="departmentId" required>
+      
+  </label>
+						
+					<div class="btn-group">
+					<button type="submit" class="btn btn-primary" style="margin-right: 1cm">Submit</button>
+						<a href="employee"><button type="button" class="btn btn-primary">back</button></a>
+				</div>
+				
+			
+				</form>
+				
+		
+	
+</body>
+</html>
+
+
+
+
+
+
+
+
+<%-- <div class="container-fluid">
 		<div class="row">
 			<div class="col-3"></div>
 			<div class="col-6 col-md-4 col-md-offset-6">
@@ -232,66 +304,3 @@ button {
 					</div>			
 					 --%>
 					
-					
-						
-		<form style="align-content: center;" class="registration" action="employee" method="post">
-  <h1> Employee Registration!</h1>
-
-			<label class="pure-material-textfield-outlined">
-    		 <span>&nbsp; &nbsp;&nbsp; &nbsp;</span>
-     <input placeholder=" Employee Id" name="employeeId" type="text" required>
-     
-  </label>
-  
-  <label class="pure-material-textfield-outlined">
-    	 <span>&nbsp; &nbsp;&nbsp; &nbsp;</span>
-   <input
-							type="text" placeholder="Employee Name" name="employeeName"  type="text" required>
-     
-  </label>
-  
-  <label class="pure-material-textfield-outlined">
-   	
-   	 <span>&nbsp; &nbsp;&nbsp; &nbsp;</span>
-   <input type="text" placeholder="Phone no" name="employeePhone" maxlength="10" pattern="[0-9]{10}" required>
-   
-  </label>
-  
-  <label class="pure-material-textfield-outlined">
-    
-     <span>&nbsp; &nbsp;&nbsp; &nbsp;</span>
- <input type="date" placeholder="Date Of joining" name="employeeDoj" required>
-   
-  </label>
-		
-  <label class="pure-material-textfield-outlined">
-     
-      <span>&nbsp; &nbsp;&nbsp; &nbsp;</span>
-   <input type="text" placeholder="Employee Salary" name="employeeSalary" required>
-     
-  </label>
-  
-			<label class="pure-material-textfield-outlined">
-     	<span>&nbsp; &nbsp;&nbsp; &nbsp;</span>
-   <input type="text" placeholder="licence No" name="employeeLicense" required>
-      
-  </label>
-  
-  <label class="pure-material-textfield-outlined">
-     	<span>&nbsp; &nbsp;&nbsp; &nbsp;</span>
-   <input type="text" placeholder="Department Id" name="departmentId" required>
-      
-  </label>
-						
-					<div class="btn-group">
-					<button type="submit" class="btn btn-primary" style="margin-right: 1cm">Submit</button>
-						<a href="employee"><button type="button" class="btn btn-primary">back</button></a>
-				</div>
-				
-			
-				</form>
-				
-		
-	
-</body>
-</html>
