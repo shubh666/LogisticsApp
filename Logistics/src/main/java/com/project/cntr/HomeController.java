@@ -2,11 +2,14 @@ package com.project.cntr;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.project.dao.UserDao;
@@ -20,36 +23,126 @@ import com.project.serv.VehicleServ;
 public class HomeController {
 	
 	@Autowired
+	HttpSession session;
+	
+	@Autowired
 	private UserServ userServ;
 
 	
-	@GetMapping("/index")
+	@GetMapping("/")
 	public ModelAndView signinPage() 
 	{
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("index");
+		ModelAndView mv = new ModelAndView();	
+	    mv.setViewName("index");
 		return mv;
 	}
 	
+	@PostMapping("/")
+	public ModelAndView signinPage2(User user) 
+	{
+		ModelAndView mv = new ModelAndView();	
+		try {
+			boolean auth =this.userServ.login(user);			
+			if(auth) {
+				session.setAttribute("uname",user.getUserName());
+				session.setAttribute("uPassword",user.getUserPassword());
+				mv.setViewName("home");
+			} else {
+				String str="Enter Valid Credentials";
+				mv.addObject("msg",str);
+				mv.setViewName("index");
+			}
+			
+			return mv;
+		} catch(Exception e) {
+			System.out.println(e);
+			mv.setViewName("index");
+		}	
+		return mv;
+	}
+	
+	@GetMapping("/index")
+	public ModelAndView loginPage() 
+	{
+		ModelAndView mv = new ModelAndView();	
+		
+		String str = (String) session.getAttribute("uname");
+		String str1 = (String) session.getAttribute("uPassword");
+		
+		try {
+			if(str != null && str1 !=null)
+				{
+					mv.setViewName("home");					
+				}
+			else
+				{
+					mv.setViewName("index");
+				}
+			}catch(Exception e)
+			{
+				mv.setViewName("index");
+			}
+		
+		return mv;
+	}
+	
+	/*
+	private void addUserInSession(User l)
+	{
+		session.setAttribute("uname",l.getUserName());
+		session.setAttribute("pass", l.getUserPassword());
+		
+	}
+	*/
+	
+	@GetMapping("/logout")
+	public ModelAndView logout()
+	{
+		ModelAndView mv = new ModelAndView();
+		session.invalidate();
+		mv.setViewName("index");
+		return mv;
+	}
 	
 	@GetMapping("/home")
 	public ModelAndView signinPage1() 
 	{
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("home");	
+		
+		//mv.setViewName("home");
+
+		String str = (String) session.getAttribute("uname");
+		String str1 = (String) session.getAttribute("uPassword");
+		
+		try {
+			if(str != null && str1 !=null)
+				{
+					mv.setViewName("home");					
+				}
+			else
+				{
+					mv.setViewName("index");
+				}
+			}catch(Exception e)
+			{
+				mv.setViewName("index");
+			}
 		return mv;
 	}
 	
 	
-	@PostMapping("/home")
+	/*@PostMapping("/home")
 	public ModelAndView vuser(User user) 
 	{
-		System.out.println();
+		
 		ModelAndView mv = new ModelAndView();
 		try {
-			boolean auth = this.userServ.login(user);
-			System.out.println(auth);
+			
+			
+			boolean auth =this.userServ.login(user);			
 			if(auth) {
+				session.setAttribute("uname",user.getUserName());
+				session.setAttribute("uPassword",user.getUserPassword());
 				mv.setViewName("home");
 			} else {
 				mv.addObject("Enter Valid Credentials");
@@ -58,10 +151,11 @@ public class HomeController {
 			
 			return mv;
 		} catch(Exception e) {
+			System.out.println(e);
 			mv.setViewName("index");
 		}	
 		return  mv;
-	}
+	}*/
 	
 	
 	@GetMapping("/register")

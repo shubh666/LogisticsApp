@@ -103,6 +103,80 @@ section{
 }
 
 
+.button {
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 8px 14px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}		
+
+
+<style>
+	
+							@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+html {
+  height:100%;
+ /*  background-image: linear-gradient(to right top, #8e44ad 0%, #3498db 100%); */
+}
+
+nav {
+  max-width: 960px;
+  mask-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #ffffff 25%, #ffffff 75%, rgba(255, 255, 255, 0) 100%);
+  margin: 0 auto;
+  padding: 0px 0;
+}
+
+nav ul {
+  text-align: center;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 25%, rgba(255, 255, 255, 0.2) 75%, rgba(255, 255, 255, 0) 100%);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
+}
+
+nav ul li {
+  display: inline-block;
+}
+
+nav ul li a {
+  padding: 18px;
+  font-family: "Open Sans";
+  text-transform:uppercase;
+  color: rgba(0, 35, 122, 0.5);
+  font-size: 18px;
+  text-decoration: none;
+  display: block;
+}
+
+nav ul li a:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(0, 35, 122, 0.7);
+}
+
+.button {
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 8px 14px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}		
+			
+
+
+</style>
+
+
 
 </style>
 
@@ -130,7 +204,30 @@ $(window).on("load resize ", function() {
 
 <body>
 	<h2></h2>
-
+		<c:if test="${sessionScope.uname == null}">
+					<c:redirect url="/"></c:redirect>
+			</c:if>
+			
+				<nav>
+  <ul>
+    <li>
+      <a href="#">Home</a>
+    </li>
+    <li>
+      <a href="#">About</a>
+    </li>
+    <li>
+      <a href="#">Services</a>
+    </li>
+    <li>
+      <a href="#">Contact</a>
+    </li>
+     <li>
+    <a href="logout">logout</a>
+    </li>
+  </ul>
+</nav>
+			
 
 	<%-- <table border="1" align="center">
 
@@ -175,6 +272,7 @@ $(window).on("load resize ", function() {
           <th>Vehicle Type</th>
           <th>Load Capacity</th>
           <th>Vehicle Status</th>
+          <th>Delete</th>
           
         </tr>
       </thead>
@@ -191,6 +289,12 @@ $(window).on("load resize ", function() {
 				<td>${vehicle.vType}</td>
 				<td>${vehicle.loadCap}</td>
 				<td>${vehicle.vStatus}</td>
+				<td>
+				<form method="post" action="vehicle" > 			
+				<input type="hidden" name="vNo" value="${vehicle.vNo}">
+				<input class="button" type="submit" value="Delete">				
+				</form> 
+				</td>
 				 
 				
 		<%-- 			<c:if test="${ vehicle.vStatus== ""}">
@@ -208,10 +312,10 @@ $(window).on("load resize ", function() {
 
 	
 	<div style="display: grid; align-content: center;justify-content: center;">
-			<a href="vehicleRegister"><button style="border: 1cm;" ><span>Vehicle Registration</span></button></a></div>
+			<a href="vehicleRegister"><button class="button" style="border: 1cm;" ><span>Vehicle Registration</span></button></a></div>
  
     <div style="display: grid; align-content: center;justify-content: center;">
-			<a href="home"><button style="border: 1cm;" ><span>Back</span></button></a></div>
+			<a href="home"><button class="button" style="border: 1cm;" ><span>Back</span></button></a></div>
     
 
 

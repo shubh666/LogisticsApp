@@ -5,7 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib uri = "http://www.springframework.org/tags/form" prefix = "form"%>
+<%-- <%@taglib uri = "http://www.springframework.org/tags/form" prefix = "form"%> --%>
 
 <html>
 <head>
@@ -60,21 +60,6 @@ nav ul li a:hover {
   background: rgba(255, 255, 255, 0.1);
   color: rgba(0, 35, 122, 0.7);
 }
-
-
-.button {
-  background-color: red;
-  border: none;
-  color: white;
-  padding: 8px 14px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-}		
-
 			
 
 	
@@ -95,7 +80,7 @@ nav ul li a:hover {
 				<nav>
   <ul>
     <li>
-      <a href="#">Home</a>
+      <a href="home">Home</a>
     </li>
     <li>
       <a href="#">About</a>
@@ -118,45 +103,57 @@ nav ul li a:hover {
 		<div class="row">
 			<div class="col-3"></div>
 			<div class="col-6">
-
-				<form action="status" method="post">
+			
+		
+				<form action="employee" method="post">
+				<c:forEach var="employee" items="${listEmployee}" varStatus="status">
 				
 					<div class="form-group">
-						<label for="exampleInputPassword1">PackageID</label> 
-						 
-						<input
-							type="text" name="packageId" value="${packageId}" class="form-control" id="exampleInputPassword1" readonly>
-					</div>
-					
-	
-					
-					
-					<div class="form-group">
 						<label for="exampleInputPassword1">EmployeeID</label> 						 
-							<select name="employeeId" class="form-control">
-							<c:forEach var="employee" items="${listEmployee}" varStatus="status">
-								<option value="${employee.employeeId}">${employee.employeeId}</option>
-							</c:forEach>
-							</select>
-							
+						<input
+							type="text" name="employeeId" value="${employee.employeeId}" class="form-control" id="exampleInputPassword1" readonly>
 					</div>
 					
 					<div class="form-group">
-						<label for="exampleInputPassword1">VehicleNo</label> 
-							<select name="vehicleId" class="form-control">
-							<c:forEach var="vehicle" items="${listVehicle}" varStatus="status">						
-								<option value="${vehicle.vNo}">${vehicle.vNo}</option>	
-							</c:forEach>						
-							</select>
-							
+						<label for="exampleInputPassword1">EmployeeName</label> 						 
+						<input
+							type="text" name="employeeName" value="${employee.employeeName}" class="form-control" id="exampleInputPassword1" >
+					</div>
+					
+					<div class="form-group">
+						<label for="exampleInputPassword1">EmployeePhone</label> 						 
+						<input
+							type="text" name="employeePhone" value="${employee.employeePhone}" class="form-control" id="exampleInputPassword1" >
+					</div>
+					
+					
+					<div class="form-group">
+						<label for="exampleInputPassword1">EmployeeSalary</label> 						 
+						<input
+							type="text" name="employeeSalary" value="${employee.employeeSalary}" class="form-control" id="exampleInputPassword1" >
+					</div>
+					
+					
+					<div class="form-group">
+						<label for="exampleInputPassword1">EmployeeLicense</label> 						 
+						<input
+							type="text" name="employeeLicense" value="${employee.employeeLicense}" class="form-control" id="exampleInputPassword1" >
+					</div>
+					
+					<div class="form-group">
+						<label for="exampleInputPassword1">DepartmentID</label> 						 
+						<input
+							type="text" name="departmentId" value="${employee.departmentId}" class="form-control" id="exampleInputPassword1" >
 					</div>
 					
 					
 					
+				</c:forEach>
 																
-				<button  type="submit" class="button">Submit</button>
+				<button type="submit" class="btn btn-primary">Submit</button>
 				</form>
-				<div><a href="package"><button class=" button">back</button></a></div>
+				
+				<div><a href="employee"><button class="btn btn-primary">back</button></a></div>
 			</div>
 		</div>
 	</div>

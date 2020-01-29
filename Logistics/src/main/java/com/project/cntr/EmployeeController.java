@@ -27,6 +27,37 @@ public class EmployeeController
 		return model;
 	}
 	
+	@PostMapping("/employee")
+	public ModelAndView changeEmployee(Employee employeeStatus) 
+	{
+		ModelAndView mv = new ModelAndView();
+		this.empServ.updateEmployeeStatus(employeeStatus);
+		/* String app = request.getParameter("deleteButton"); */ 		
+		this.empServ.changeEmployeeStatus(employeeStatus);
+		Iterable<Employee> listEmployee = empServ.findAll();
+		mv.addObject("listEmployee", listEmployee);
+		mv.setViewName("employee");
+		return mv;
+		
+	}
+	
+	/*
+	 * @GetMapping("/employeeUpdate") public ModelAndView updateEmployee1(Employee
+	 * emp) { ModelAndView model = new ModelAndView(); Iterable<Employee>
+	 * listEmployee = empServ.findAll(); model.addObject("listEmployee",
+	 * listEmployee); model.setViewName("employeeUpdate"); return model; }
+	 */
+	
+	@PostMapping("/employeeUpdate")
+	public ModelAndView updateEmployee(Employee emp) 
+	{
+		System.out.println("Employee ID:"+emp.getEmployeeId());
+		ModelAndView mv = new ModelAndView();
+		Iterable<Employee> listEmployee = empServ.findById(emp);
+		mv.addObject("listEmployee", listEmployee);
+		mv.setViewName("employeeUpdate");
+		return mv;
+	}
 	
 	@GetMapping("/employeeRegister")
 	public ModelAndView employeeRegPage() 

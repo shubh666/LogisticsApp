@@ -7,4 +7,6 @@ public interface VehicleDao {
 	public boolean vehiReg(Vehicle vehicle);
 	
 	public Iterable<Vehicle> findAll();
+	
+	public boolean changeStatus(Vehicle vehicleStatus);
 }

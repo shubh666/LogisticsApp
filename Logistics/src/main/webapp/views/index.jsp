@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Logistics Management</title>
 
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -84,10 +84,10 @@ var userName=document.myform.userName.value;
 var userPassword=document.myform.userPassword.value;  
   
 if ("userName"==null || "userName"==""){  
-  alert("Name can't be blank");  
+  window.alert("Name can't be blank");  
   return false;  
 }else if(userPassword.length<4){  
-  alert("Password must be at least 4 characters long.");  
+  window.alert("Password must be at least 4 characters long.");  
   return false;  
   }  
 }  
@@ -136,7 +136,8 @@ if ("userName"==null || "userName"==""){
 	
 	<div class="login">
 	<h1>Login</h1>
-    <form action="home" method="post" name="myform">
+    <form action="/" method="post" name="myform">
+    	
     	<input type="text" name="userName" placeholder="Username" required="required" />
         <input type="password" name="userPassword" placeholder="Password" required="required" />
         <button type="submit" class="btn btn-primary btn-block btn-large" onclick="validateform()">Let me in.</button><a href="forgetPassword">forget Password?</a> 

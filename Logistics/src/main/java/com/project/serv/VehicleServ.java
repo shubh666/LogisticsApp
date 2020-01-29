@@ -10,4 +10,6 @@ public interface VehicleServ {
 	public boolean vehiReg(Vehicle vehicle);
 
 	public Iterable<Vehicle> findAll();
+	
+	public boolean changeStatus(Vehicle vehicleStatus);
 }

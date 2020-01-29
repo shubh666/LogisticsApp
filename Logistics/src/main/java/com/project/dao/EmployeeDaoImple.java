@@ -38,7 +38,10 @@ public class EmployeeDaoImple implements EmployeeDao {
 	@Override
 	public Iterable<Employee> findAll() {
 	
-		List<Employee> list = jdbcTemplate.query("SELECT * FROM employee", new RowMapper<Employee>() {
+		String str="Removed";
+		String sql="SELECT * FROM employee where status!=?";
+		
+		List<Employee> list = jdbcTemplate.query(sql,  new Object[] {str} , new RowMapper<Employee>() {
 
 			@Override
 			public Employee mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -61,6 +64,72 @@ public class EmployeeDaoImple implements EmployeeDao {
 		
 		return list;
 				
+	}
+
+	@Override
+	public boolean changeEmployeeStatus(Employee employeeStatus) {
+		
+	   try {
+			
+			String sql = "update employee set status='Removed' where employeeid=? ";
+			jdbcTemplate.update(sql, employeeStatus.getEmployeeId());
+		
+			return true;	
+		
+		}
+		catch(Exception e) {
+			
+			return false;
+			
+		}
+	}
+
+	@Override
+	public Iterable<Employee> findById(Employee emp) {
+		
+		int id = emp.getEmployeeId();
+		String sql="SELECT * FROM employee where employeeId=?";
+		
+		List<Employee> list = jdbcTemplate.query(sql,  new Object[] {id} , new RowMapper<Employee>() {
+
+			@Override
+			public Employee mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Employee emp = new Employee();
+
+				emp.setEmployeeId(rs.getInt(1));
+				emp.setEmployeeName(rs.getString(2));
+				emp.setEmployeePhone(rs.getString(3));
+				emp.setEmployeeDoj(rs.getString(4));
+				emp.setEmployeeSalary(rs.getString(5));
+				emp.setEmployeeLicense(rs.getString(6));
+				emp.setDepartmentId(rs.getInt(7));
+				emp.setStatus(rs.getString(8));
+				return emp;
+			}
+	
+		
+		
+		});
+		
+		return list;
+	}
+
+	@Override
+	public boolean updateEmployeeStatus(Employee emp) {
+		 
+		try {
+				
+				String sql = "update employee set employeeName=?,employeeSalary=?,employeeLicense=?,deptid=? where employeeid=? ";
+				jdbcTemplate.update(sql, emp.getEmployeeName() , emp.getEmployeePhone() , emp.getEmployeeSalary(), emp.getEmployeeLicense() , emp.getDepartmentId() ,emp.getEmployeeId());
+			
+				return true;	
+			
+			}
+			catch(Exception e) {
+				
+				return false;
+				
+			}
 	}
 
 }

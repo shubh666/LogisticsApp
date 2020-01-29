@@ -24,5 +24,23 @@ public class EmployeeServImple implements EmployeeServ {
 		return empDao.findAll();
 	}
 
+	@Override
+	public boolean changeEmployeeStatus(Employee employeeStatus) {
+		
+		return empDao.changeEmployeeStatus(employeeStatus);
+	}
+
+	@Override
+	public Iterable<Employee> findById(Employee emp) {
+		// TODO Auto-generated method stub
+		return empDao.findById(emp);
+	}
+
+	@Override
+	public boolean updateEmployeeStatus(Employee emp) {
+		// TODO Auto-generated method stub
+		return empDao.updateEmployeeStatus(emp);
+	}
+
 	
 }

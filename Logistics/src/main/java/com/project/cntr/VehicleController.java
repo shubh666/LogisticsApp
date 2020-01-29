@@ -25,6 +25,17 @@ public class VehicleController
 		return model;
 	}
 	
+	@PostMapping("/vehicle")
+	public ModelAndView changeVehicleStatus(Vehicle vehicleStatus) 
+	{	
+		ModelAndView mv = new ModelAndView();
+		this.vehicleServ.changeStatus(vehicleStatus);
+		Iterable<Vehicle> listVehicle = vehicleServ.findAll();
+		mv.addObject("listVehicle", listVehicle);
+		mv.setViewName("vehicle");
+		return mv;
+	}
+	
 	@GetMapping("/vehicleRegister")
 	public ModelAndView vehicleRegPage() 
 	{

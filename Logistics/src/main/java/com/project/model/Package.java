@@ -2,14 +2,35 @@ package com.project.model;
 
 public class Package {
 	
-	private String packageId;
+	private int packageId;
 	private String packageWeight;
 	private String sorce;
 	private String destination;
 	private String amount;
 	private String status;
+	private int employeeId;
+	private String vehicleId;
+	private String date;
 	
-	public String getPackageId() {
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
+	}
+	public int getEmployeeId() {
+		return employeeId;
+	}
+	public void setEmployeeId(int employeeId) {
+		this.employeeId = employeeId;
+	}
+	public String getVehicleId() {
+		return vehicleId;
+	}
+	public void setVehicleId(String vehicleId) {
+		this.vehicleId = vehicleId;
+	}
+	public int getPackageId() {
 		return packageId;
 	}
 	public String getStatus() {
@@ -18,7 +39,7 @@ public class Package {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public void setPackageId(String packageId) {
+	public void setPackageId(int packageId) {
 		this.packageId = packageId;
 	}
 	public String getPackageWeight() {

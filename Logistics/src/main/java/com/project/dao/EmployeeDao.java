@@ -9,4 +9,9 @@ public interface EmployeeDao {
 	
 	public Iterable<Employee> findAll();
 	
+	public Iterable<Employee> findById(Employee emp);
+
+	public boolean changeEmployeeStatus(Employee employeeStatus);
+	
+	public boolean updateEmployeeStatus(Employee emp);
 }

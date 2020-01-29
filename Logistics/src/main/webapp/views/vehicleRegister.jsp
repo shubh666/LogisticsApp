@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,6 +42,20 @@ body {
   100%{background-color:#45a3e5}
 }
 
+.button {
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 8px 14px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}		
+
+
 </style>
 
 </head>
@@ -48,7 +63,9 @@ body {
 
 
 <body>
-
+		<c:if test="${sessionScope.uname == null}">
+					<c:redirect url="/"></c:redirect>
+			</c:if>
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-3"></div>
@@ -74,9 +91,9 @@ body {
 							type="text" name="loadCap" class="form-control" id="exampleInputPassword1">
 					</div>			
 					
-				<button type="submit" class="btn btn-primary">Submit</button>
+				<button type="submit" class="button">Submit</button>
 				</form>
-				<div><a href="vehicle"><button>back</button></a></div>
+				<div><a href="vehicle"><button class="button">back</button></a></div>
 			</div>
 		</div>
 	</div>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -8,9 +9,12 @@
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"
         integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
         crossorigin="anonymous"></script> 
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCoB-BsEvPcyikw7T2AudyFfOpQknFLbGI&callback=myMap"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCoB-BsEvPcyikw7T2AudyFfOpQknFLbGI&callback=myMap"></script>
     </head>
     <body>
+    	<c:if test="${sessionScope.uname == null}">
+					<c:redirect url="/"></c:redirect>
+			</c:if>
         <input type="text" id="lat">
         <input type="text" id="long">
         <button id="load_button">load</button>

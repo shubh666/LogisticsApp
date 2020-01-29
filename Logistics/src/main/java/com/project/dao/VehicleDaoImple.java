@@ -45,8 +45,10 @@ public class VehicleDaoImple implements VehicleDao
 	@Override
 	public Iterable<Vehicle> findAll() {
 		
+		String str="Removed";
+		String sql="SELECT * FROM vehicle where status!=?";
 		
-		List<Vehicle> list = jdbcTemplate.query("SELECT * FROM vehicle", new RowMapper<Vehicle>() {
+		List<Vehicle> list = jdbcTemplate.query(sql, new Object[] {str} ,new RowMapper<Vehicle>() {
 
 			@Override
 			public Vehicle mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -66,6 +68,24 @@ public class VehicleDaoImple implements VehicleDao
 		
 		return list;
 
+	}
+
+	@Override
+	public boolean changeStatus(Vehicle vehicleStatus) {
+		
+		try {
+				String sql = "update vehicle set status='Removed' where vehicleno=? ";
+				jdbcTemplate.update(sql, vehicleStatus.getvNo());
+			
+				return true;	
+			
+			}
+			catch(Exception e) {
+				
+				return false;
+				
+			}
+		
 	}
 
 }

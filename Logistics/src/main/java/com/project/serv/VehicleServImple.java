@@ -25,4 +25,10 @@ public class VehicleServImple implements VehicleServ {
 		return vehicleDao.findAll();
 	}
 
+	@Override
+	public boolean changeStatus(Vehicle vehicleStatus) {
+		// TODO Auto-generated method stub
+		return vehicleDao.changeStatus(vehicleStatus);
+	}
+
 }

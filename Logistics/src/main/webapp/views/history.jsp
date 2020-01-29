@@ -113,8 +113,23 @@ width: 500px;
 margin: 0 auto;
 }
 
+</style>
 
 
+
+<script>
+
+$(window).on("load resize ", function() {
+	  var scrollWidth = $('.tbl-content').width() - $('.tbl-content table').width();
+	  $('.tbl-header').css({'padding-right':scrollWidth});
+	}).resize();
+
+
+
+</script>
+
+<style>
+	
 							@import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
 html {
@@ -155,6 +170,7 @@ nav ul li a:hover {
   color: rgba(0, 35, 122, 0.7);
 }
 			
+
 .button {
   background-color: red;
   border: none;
@@ -168,24 +184,7 @@ nav ul li a:hover {
   cursor: pointer;
 }		
 
-
-
 </style>
-
-
-
-<script>
-
-$(window).on("load resize ", function() {
-	  var scrollWidth = $('.tbl-content').width() - $('.tbl-content table').width();
-	  $('.tbl-header').css({'padding-right':scrollWidth});
-	}).resize();
-
-
-
-</script>
-
-
 
 
 
@@ -195,14 +194,14 @@ $(window).on("load resize ", function() {
 
 
 <body>
-	<h2></h2>	
-	<c:if test="${sessionScope.uname == null}">
+	<h2></h2>			
+			<c:if test="${sessionScope.uname == null}">
 					<c:redirect url="/"></c:redirect>
-			</c:if>		
-			
+			</c:if>	
 			<section>
 			
-				<nav>
+			
+			<nav>
   <ul>
     <li>
       <a href="#">Home</a>
@@ -220,64 +219,69 @@ $(window).on("load resize ", function() {
     <a href="logout">logout</a>
     </li>
   </ul>
-</nav>
+</nav>	
+			
 			
 			
   <!--for demo wrap-->
-  <h1>Delivered Package</h1>
+  <h1>Package</h1>
   <div class="tbl-header">
     <table cellpadding="0" cellspacing="0" border="0">
       <thead>
         <tr>
         
           <th>PackageID</th>
+          <th>PackageWeight</th>
+          <th>Source</th>
+          <th>Destination</th>
+          <th>Amount</th> 
+          <th>Status</th>
+          <th>EmployeeID</th>
+          <th>VehicleId</th>
           <th>Date</th>
-         
-          
         </tr>
       </thead>
     </table>
   </div>
+ 
   <div class="tbl-content">
+  <form method="post" action="dispatch" >
     <table cellpadding="0" cellspacing="0" border="0">
       <tbody>
       
-      <c:forEach var="packagee" items="${listPackageStatus}" varStatus="status">
+      <c:forEach var="packagee" items="${listPackage}" varStatus="status">
 			<tr>
+				
 				<td>${packagee.packageId}</td>
+				<td>${packagee.packageWeight}</td>
+				<td>${packagee.sorce}</td>
+				<td>${packagee.destination}</td>
+				<td>₹ ${packagee.amount}</td>
+				<td>${packagee.status}</td>
+				<td>${packagee.employeeId}</td>
+				<td>${packagee.vehicleId}</td>
 				<td>${packagee.date}</td>
+				<!--<td><button>dispatch</button></td>-->
 				
-				
-					
-					</td>
+				<!-- <td><a href="dispatch"><input type="text" name="inputPackage" value="dispatch"></a>
+					?packageId=${packagee.packageId} -->
 				<!-- <a href="package"><input type="button" value="use"></a></td> -->
-				
-
+	
 			</tr>
 		</c:forEach>
         
          
       </tbody>
-    </table>
+    </table> 
+   </form>
   </div>
 </section>
-
 	<div class="buttons" style="display: grid; align-content: center;justify-content: center;">
-	<div class="action_btn">
-	<a href="status"><button class="button" style="border: 1cm;" >Back</button></a>
-
-	
-			<a href="home"><button class="button" style="border: 1cm;" >Home</button></a>
+	<div class="action_btn">	
+			<a href="home"><button class="button" style="border: 1cm;" >Back</button></a>
 	</div>
 		
-	</div>
-	<div >
-			
-			</div>
-
-			
-			
-			
+	</div>	
 
 </body>
 </html>

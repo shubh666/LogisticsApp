@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,6 +43,20 @@ body {
   100%{background-color:#45a3e5}
 }
 
+.button {
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 8px 14px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}		
+
+
 </style>
 
 
@@ -71,7 +86,7 @@ function Validate() {
     
 
 <body>
-
+	
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-3"></div>
@@ -103,10 +118,10 @@ function Validate() {
 							type="password" class="form-control" id="txtConfirmPassword">
 					</div>
 					
-					<button type="submit" id="btnSubmit" class="btn btn-primary" onclick="return Validate()">Submit</button>
+					<button type="submit" id="btnSubmit" class="button" onclick="return Validate()">Submit</button>
 					
 				</form>
-				<a href ="index"><button class="btn btn-primary">Back</button></a>
+				<a href ="index"><button class="button">Back</button></a>
 			</div>
 		</div>
 	</div>

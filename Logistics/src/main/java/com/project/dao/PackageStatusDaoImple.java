@@ -1,4 +1,4 @@
-package com.project.dao;
+/*package com.project.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -27,16 +27,17 @@ public class PackageStatusDaoImple implements PackageStatusDao {
 		return false;
 	}
 
+	1)
 	@Override
-	public Iterable<PackageStatus> findAll() {
+	public Iterable<Package> findAll() {
 		// TODO Auto-generated method stub
 		
 		
-		List<PackageStatus> list = jdbcTemplate.query("SELECT * FROM currentconsignment", new RowMapper<PackageStatus>() {
+		List<Package> list = jdbcTemplate.query("SELECT * FROM package", new RowMapper<Package>() {
 
 			@Override
-			public PackageStatus mapRow(ResultSet rs, int rowNum) throws SQLException {
-				PackageStatus pkg = new PackageStatus();
+			public Package mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Package pkg = new Package();
 				
 				pkg.setPackageId(rs.getInt(1));
 				pkg.setVehicleId(rs.getString(2));
@@ -49,15 +50,18 @@ public class PackageStatusDaoImple implements PackageStatusDao {
 		});
 		
 		return list;
-	}
-
+	} 
+   2)
 	@Override
 	public boolean create(PackageStatus pkg) {
 	
 		try {
 			
 				String sql = "INSERT INTO currentconsignment VALUES (?, ?, ?)";
-				jdbcTemplate.update(sql, pkg.getPackageId(),pkg.getVehicleId(),pkg.getEmployeeId());			
+				jdbcTemplate.update(sql, pkg.getPackageId(),pkg.getVehicleId(),pkg.getEmployeeId());	
+				
+				String sql2= "update history set vehicleno = ? , employeeName= ? where packageid =?";
+				jdbcTemplate.update(sql2, pkg.getVehicleId(),pkg.getEmployeeId(),pkg.getPackageId());
 				return true;	
 			
 			}
@@ -68,7 +72,7 @@ public class PackageStatusDaoImple implements PackageStatusDao {
 			}
 		
 	}
-
+  3)
 	@Override
 	public boolean changeStatus(PackageStatus pkg) {
 		
@@ -94,7 +98,7 @@ public class PackageStatusDaoImple implements PackageStatusDao {
 			
 		}
 	}
-
+ 4)
 	//06:01pm
 	@Override
 	public boolean create2(PackageStatus pkg) {
@@ -102,6 +106,10 @@ public class PackageStatusDaoImple implements PackageStatusDao {
 		{
 			String sql = "INSERT INTO delivered VALUES (?,now())";
 			jdbcTemplate.update(sql, pkg.getPackageId());			
+			
+			String sql2= "delete from currentconsignment where packageid=?";
+			jdbcTemplate.update(sql2, pkg.getPackageId());
+			
 			return true;
 		}
 		catch(Exception e)
@@ -109,7 +117,7 @@ public class PackageStatusDaoImple implements PackageStatusDao {
 		return false;
 		}
 	}
-
+5)
 	@Override
 	public Iterable<PackageStatus> findAll1() {
 		List<PackageStatus> list = jdbcTemplate.query("SELECT * FROM delivered", new RowMapper<PackageStatus>() {
@@ -129,4 +137,7 @@ public class PackageStatusDaoImple implements PackageStatusDao {
 		return list;
 	}
 
+
+
 }
+*/
