@@ -1,10 +1,13 @@
 package com.project.cntr;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -33,7 +36,6 @@ public class EmployeeController
 	public ModelAndView changeEmployee(Employee employeeStatus, @RequestParam("deleteButton") boolean str, HttpServletRequest request) 
 	{
 		
-		System.out.println();
 		ModelAndView mv = new ModelAndView();
 		if(str)
 		{
@@ -60,7 +62,6 @@ public class EmployeeController
 	@PostMapping("/employeeUpdate")
 	public ModelAndView updateEmployee(Employee emp) 
 	{
-		System.out.println("Employee ID:"+emp.getEmployeeId());
 		ModelAndView mv = new ModelAndView();
 		Iterable<Employee> listEmployee = empServ.findById(emp);
 		mv.addObject("listEmployee", listEmployee);
@@ -78,13 +79,31 @@ public class EmployeeController
 	
 	
 	@PostMapping("/employeeRegister")
-	public ModelAndView employeeRegister(Employee emp) 
+	public ModelAndView employeeRegister(@Valid @ModelAttribute("emp")Employee emp,BindingResult result) 
 	{
-		this.empServ.create(emp);
 		ModelAndView mv = new ModelAndView();
-		Iterable<Employee> listEmployee = empServ.findAll();
-		mv.addObject("listEmployee", listEmployee);
-		mv.setViewName("employee");
+
+		if(result.hasErrors()) {
+			mv.setViewName("employeeRegister");
+			return mv;
+		}
+		
+		boolean register=this.empServ.create(emp);
+		if(register)
+		{
+			mv.addObject("msg", "Employee Registered Succesfully");
+			mv.setViewName("employeeRegister");
+		}
+		else
+		{
+			mv.addObject("msg", "Employee Not Registered");
+			mv.setViewName("employeeRegister");
+		}
+		/*
+		 * Iterable<Employee> listEmployee = empServ.findAll();
+		 * mv.addObject("listEmployee", listEmployee);
+		 */
+		
 		return mv;
 	}
 }

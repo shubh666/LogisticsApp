@@ -1,10 +1,17 @@
 package com.project.model;
 
-public class Vehicle {
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 
+public class Vehicle {
+	
+	@NotEmpty(message = "vehicle number can not be empty")
 	private String vNo;
+	@NotBlank(message = "vehicle type can not blank")
 	private String vType;
+	@NotEmpty(message = "loadCap can not be empty")
 	private String loadCap;
+	
 	private String vStatus;
 	
 	public String getvStatus() {

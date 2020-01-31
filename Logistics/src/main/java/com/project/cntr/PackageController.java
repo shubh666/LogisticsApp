@@ -1,8 +1,12 @@
 package com.project.cntr;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -62,11 +66,26 @@ public class PackageController {
 	}
 
 	@PostMapping("/packageRegister")
-	public ModelAndView packageRegister(Package pkg) {
-		System.out.println();
-		this.packageServ.createPackage(pkg);
+	public ModelAndView packageRegister(@Valid@ModelAttribute("pkg")Package pkg,BindingResult result) {
+		
+		
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("packageRegister");
+		if(result.hasErrors()) {
+			mv.setViewName("packageRegister");
+			return mv;
+		}
+		
+		boolean b=this.packageServ.createPackage(pkg);
+		if(b)
+		{
+			mv.addObject("msg","Package Registerd Succesfully");
+			mv.setViewName("packageRegister");
+		}
+		else
+		{
+			mv.addObject("msg","Package Not Registerd");
+			mv.setViewName("packageRegister");
+		}
 		return mv;
 	}
 

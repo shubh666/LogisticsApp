@@ -1,14 +1,30 @@
 package com.project.model;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
 public class Employee 
 {	
 	private int employeeId;
+	@NotEmpty(message = "employeeName should not be null")
 	private String employeeName;
+	@Size(min = 10,max = 10)
 	private String employeePhone;
+	@NotEmpty(message = "dob should not be null")
 	private String employeeDoj;
+	@NotEmpty(message = "salary can not be null")
 	private String employeeSalary;
+	@NotEmpty(message = "employeeLicense can not be null")
 	private String employeeLicense;
-	private int departmentId;
+	@NotEmpty(message = "deptName can not be null")
+	private String deptName;
+	
+	public String getDeptName() {
+		return deptName;
+	}
+	public void setDeptName(String deptName) {
+		this.deptName = deptName;
+	}
 	private String status;
 	
 	public String getStatus() {
@@ -53,10 +69,5 @@ public class Employee
 	public void setEmployeeLicense(String employeeLicense) {
 		this.employeeLicense = employeeLicense;
 	}
-	public int getDepartmentId() {
-		return departmentId;
-	}
-	public void setDepartmentId(int departmentId) {
-		this.departmentId = departmentId;
-	}
+	
 }

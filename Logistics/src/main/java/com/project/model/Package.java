@@ -1,16 +1,26 @@
 package com.project.model;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+
 public class Package {
 	
-	private int packageId;
+
+	private int packageId;	
+	@NotBlank(message = "packageWeight can not be blank")
 	private String packageWeight;
+	@NotBlank(message = "sorce can not be blank")
 	private String sorce;
+	@NotBlank(message = "destination can not be blank")
 	private String destination;
+	@NotBlank(message = "amount can not be blank")
 	private String amount;
+	
 	private String status;
 	private int employeeId;
 	private String vehicleId;
 	private String date;
+	
 	
 	public String getDate() {
 		return date;

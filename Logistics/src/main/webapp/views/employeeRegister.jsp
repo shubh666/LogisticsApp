@@ -1,15 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-    "http://www.w3.org/TR/html4/loose.dtd">
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Employee Registration</title>
 
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -167,6 +167,30 @@ opacity
 .left-footer>a:hover, .right-footer>a:hover {
 	text-decoration: underline;
 }
+
+.error{
+						color:red;
+					}
+					
+					
+					
+					.footer {
+    position: absolute;
+  font-size: 12px;
+    bottom: 0;
+    width: 90%;
+    height: 60px; /* Set the fixed height of the footer here */ 
+   
+    text-align: center;
+    a {
+        text-decoration: none;
+        color: inherit;
+       border-bottom: 1px solid;
+        &:hover {
+        border-bottom: 1px transparent;
+        }
+    }
+  }
 </style>
 
 <script>
@@ -177,6 +201,66 @@ opacity
 					    event.preventDefault();
 					    form.classList.add('signed');
 					};
+					
+					
+					function InvalidName(textbox) {
+
+						if (textbox.value === '') {
+							textbox.setCustomValidity('Please give the name of employee!');
+						} else if (textbox.validity.typeMismatch) {
+							textbox.setCustomValidity('Please give the name of employee!');
+						} else {
+							textbox.setCustomValidity('');
+						}
+
+						return true;
+					}
+					
+					
+					function InvalidPhone(textbox) {
+
+						if (textbox.value === '') {
+							textbox.setCustomValidity('Enter the Phone number!');
+						} else if (textbox.validity.typeMismatch) {
+							textbox.setCustomValidity('Enter the Phone number!');
+						} else {
+							textbox.setCustomValidity('');
+						}
+
+						return true;
+					}
+					
+					
+					function InvalidSal(textbox) {
+
+						if (textbox.value === '') {
+							textbox.setCustomValidity('You have to pay the Employee!');
+						} else if (textbox.validity.typeMismatch) {
+							textbox.setCustomValidity('You have to pay the Employee!');
+						} else {
+							textbox.setCustomValidity('');
+						}
+
+						return true;
+					}
+					
+					
+					function InvalidLic(textbox) {
+
+						if (textbox.value === '') {
+							textbox.setCustomValidity('License is must!');
+						} else if (textbox.validity.typeMismatch) {
+							textbox.setCustomValidity('license is must!');
+						} else {
+							textbox.setCustomValidity('');
+						}
+
+						return true;
+					}
+					
+					
+					
+					
 					
 					</script>
 
@@ -193,36 +277,60 @@ opacity
 
 
 
-	<form style="align-content: center;" class="registration"
-		action="employeeRegister" method="post">
+	<form:form style="align-content: center;" class="registration"
+		action="employeeRegister" modelAttribute="emp" method="post">
 		<h1>Employee Registration!</h1>
 
+		<%String str=(String)request.getAttribute("msg");
+		if(str!=null)
+		{
+		%>
+		<h6 style="color:red;"><%= str%></h6>
+		<%
+		}
+		%>
 
 
 		<label class="pure-material-textfield-outlined"> <span>&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp; &nbsp;</span> <input type="text" placeholder="Employee Name"
-			name="employeeName" type="text" required>
+				&nbsp;&nbsp; &nbsp;</span> 
+				<input path="employeeName" oninvalid="InvalidName(this);"type="text" placeholder="Employee Name"
+			name="employeeName" type="text" required >
+			<form:errors path="employeeName" cssClass="error"></form:errors>
 
+		</label>
+		 <label class="pure-material-textfield-outlined"> <span>&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp; &nbsp;</span> <input path="employeePhone" oninvalid="InvalidPhone(this);" oninput="InvalidPhone(this);" type="text" placeholder="Phone no"
+			name="employeePhone" maxlength="10" pattern="[0-9]{10}" required >
+			<form:errors path="employeePhone" cssClass="error"></form:errors>
+			
 		</label> <label class="pure-material-textfield-outlined"> <span>&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp; &nbsp;</span> <input type="text" placeholder="Phone no"
-			name="employeePhone" maxlength="10" pattern="[0-9]{10}" required>
-
-		</label> <label class="pure-material-textfield-outlined"> <span>&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp; &nbsp;</span> <input type="date" placeholder="Date Of joining"
+				&nbsp;&nbsp; &nbsp;</span> <input path="employeeDoj"  type="date" placeholder="Date Of joining"
 			name="employeeDoj" required>
+			<form:errors path="employeeDoj" cssClass="error"></form:errors>
 
 		</label> <label class="pure-material-textfield-outlined"> <span>&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</span> <input type="text"
-			placeholder="Employee Salary" name="employeeSalary" required>
+				&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</span> <input path="employeeSalary" type="text"
+			placeholder="Employee Salary" oninvalid="InvalidSal(this);" oninput="InvalidSal(this);" name="employeeSalary" required>
+			<form:errors path="employeeSalary" cssClass="error"></form:errors>
 
 		</label> <label class="pure-material-textfield-outlined"> <span>&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</span> <input type="text"
-			placeholder="licence No" name="employeeLicense" required>
+				&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</span> <input path="employeeLicense" type="text"
+		oninvalid="InvalidLic(this);" oninput="InvalidLic(this);"	placeholder="licence No" name="employeeLicense" required >
+			<form:errors path="employeeLicense" cssClass="error"></form:errors>
 
 		</label> <label class="pure-material-textfield-outlined"> <span>&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp; &nbsp;</span> <input type="text" placeholder="Department Id"
+				&nbsp;&nbsp; &nbsp;</span> 
+				<select placeholder="Department Name" name="deptName" >
+						<option>Driver</option>
+						<option>Helper</option>
+						<option>Cleaner</option>
+				</select>
+				
+				
+			<!-- 	
+				<input type="text" placeholder="Department Id"
 			name="departmentId" required>
-
+ -->
 		</label>
 
 		<div class="btn-group">
@@ -233,7 +341,7 @@ opacity
 		</div>
 
 
-	</form>
+	</form:form>
 
 
 

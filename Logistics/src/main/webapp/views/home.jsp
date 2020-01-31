@@ -1,52 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!-- <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-	crossorigin="anonymous">
-	
-	<style>
-	.tblbg2a {
-    background-image: url("https://tipac.net/wp-content/uploads/2017/05/freight-logisitics-three-trucks-on-road-1115x950_tiny.jpg");
-}
-	</style>
-	
-
-</head>
-
-
-
-<body class="tblbg2a">
-
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-3"></div>
-			<div class="col-6">
-			
-					<a href="vehicle"><button class="btn btn-primary">Vehicle</button></a>
-					<a href="employee"><button class="btn btn-primary">Employee</button></a>
-					<a href="package"><button class="btn btn-primary">Package</button></a>
-					<a href="status"><button class="btn btn-primary">Status</button></a>
-					<a href="delivered"><button class="btn btn-primary">Delivered</button></a>
-					
-			</div>
-			<div class="col-3">
-			abc
-					<a href="index">logout</a>
-			</div>
-		</div>
-	</div>
-
-
-</body>
-</html> -->
 
 
 <!DOCTYPE html>
@@ -142,6 +96,27 @@ nav ul li a:hover {
 	background: rgba(255, 255, 255, 0.1);
 	color: rgba(0, 35, 122, 0.7);
 }
+
+
+
+.footer {
+    position: absolute;
+  font-size: 12px;
+    bottom: 0;
+    width: 90%;
+    height: 60px; /* Set the fixed height of the footer here */ 
+   
+    text-align: center;
+    a {
+        text-decoration: none;
+        color: inherit;
+       border-bottom: 1px solid;
+        &:hover {
+        border-bottom: 1px transparent;
+        }
+    }
+  }
+
 </style>
 </head>
 <body>
@@ -152,10 +127,9 @@ nav ul li a:hover {
 
 	<nav>
 		<ul>
-			<li><a href="#">Home</a></li>
-			<li><a href="#">About</a></li>
-			<li><a href="#">Services</a></li>
-			<li><a href="#">Contact</a></li>
+			<li><a href="home">Home</a></li>
+			<li><a href="about">About</a></li>
+			<li><a href="contact">Contact Us</a></li>
 			<li><a href="logout">logout</a></li>
 		</ul>
 	</nav>
@@ -192,6 +166,17 @@ nav ul li a:hover {
 	</div>
 
 
+<footer class="footer">
+
+    <!-- Copyright -->
+    <!-- ❤️  -->
+    <div class="footer-copyright text-center">&copy; Developed <i class="fas fa-heart" aria-hidden="true"></i> by
+        Group 16
+    </div>
+    <!-- Copyright -->
+
+</footer>
+<!-- Footer ends-->
 
 
 </body>

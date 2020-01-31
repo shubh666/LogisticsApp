@@ -176,6 +176,9 @@ nav ul li a:hover {
 	margin: 4px 2px;
 	cursor: pointer;
 }
+
+		
+
 </style>
 <script>
 	$(window).on(
@@ -197,14 +200,16 @@ nav ul li a:hover {
 		<c:redirect url="/"></c:redirect>
 	</c:if>
 
-	<section> <nav>
-	<ul>
-		<li><a href="#">Home</a></li>
-		<li><a href="#">About</a></li>
-		<li><a href="#">Services</a></li>
-		<li><a href="#">Contact</a></li>
-		<li><a href="logout">logout</a></li>
-	</ul>
+	<section> 
+	<nav>
+		<ul>
+			<li><a href="home">Home</a></li>
+			<li><a href="about">About</a></li>
+			<li><a href="contact">Contact Us</a></li>
+			<li><a href="logout">logout</a></li>
+		</ul>
+	
+
 	</nav>
 	<h1>Delivered Package</h1>
 	<div class="tbl-header">
@@ -235,7 +240,7 @@ nav ul li a:hover {
 	<div class="buttons"
 		style="display: grid; align-content: center; justify-content: center;">
 		<div class="action_btn">
-			<a href="home"><button class="button" style="border: 1cm;">Back</button></a>
+			
 			<a href="home"><button class="button" style="border: 1cm;">Home</button></a>
 		</div>
 	</div>

@@ -180,6 +180,10 @@ nav ul li a:hover {
 	margin: 4px 2px;
 	cursor: pointer;
 }
+
+
+
+
 </style>
 
 
@@ -197,14 +201,14 @@ nav ul li a:hover {
 		<c:redirect url="/"></c:redirect>
 	</c:if>
 	<section> <nav>
-	<ul>
-		<li><a href="#">Home</a></li>
-		<li><a href="#">About</a></li>
-		<li><a href="#">Services</a></li>
-		<li><a href="#">Contact</a></li>
-		<li><a href="logout">logout</a></li>
-	</ul>
-	</nav> <!--for demo wrap-->
+		<ul>
+			<li><a href="home">Home</a></li>
+			<li><a href="about">About</a></li>
+			<li><a href="contact">Contact Us</a></li>
+			<li><a href="logout">logout</a></li>
+		</ul>
+	</nav>
+<!--for demo wrap-->
 	<h1>Employee</h1>
 	<div class="tbl-header">
 		<table cellpadding="0" cellspacing="0" border="0">
@@ -216,7 +220,7 @@ nav ul li a:hover {
 					<th>DOJ</th>
 					<th>Salary</th>
 					<th>License</th>
-					<th>DepartmentID</th>
+					<th>Department</th>
 					<th>Status</th>
 					<th>Update</th>
 					<th>Delete</th>
@@ -237,7 +241,7 @@ nav ul li a:hover {
 						<td>${employee.employeeDoj}</td>
 						<td>${employee.employeeSalary}</td>
 						<td>${employee.employeeLicense}</td>
-						<td>${employee.departmentId}</td>
+						<td>${employee.deptName}</td>
 						<td>${employee.status}</td>
 						<td>
 							<form method="post" action="employeeUpdate">
@@ -272,7 +276,7 @@ nav ul li a:hover {
 		<a href="employeeRegister"><button class="button"
 				style="border: 1cm; margin-left: 30%;">
 				<span>Employee Registration</span>
-			</button></a> <a href="home"><button class="button">back</button></a>
+			</button></a> <a href="home"><button class="button">Back</button></a>
 	</div>
 
 

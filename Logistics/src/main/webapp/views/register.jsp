@@ -533,6 +533,10 @@ opacity
 .left-footer>a:hover, .right-footer>a:hover {
 	text-decoration: underline;
 }
+
+
+
+
 </style>
 
 <script>
@@ -561,6 +565,15 @@ function Validate() {
 }
 </script>
 
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>   
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>    
 </head>
 
 <body class="img">
@@ -570,9 +583,14 @@ function Validate() {
 		<h1>Register Yourself!</h1>
 
 		<label class="pure-material-textfield-outlined"> <span></span>
-			<input placeholder="User Name " type="text" name="userName" required>
-
-		</label> <label class="pure-material-textfield-outlined"> <span></span>
+			<input placeholder="User Name "  id="uname" name="userName" required><br>
+			
+			</label>
+			
+			 
+		 <span id="ures" style="color:blue"></span>
+		
+		<label class="pure-material-textfield-outlined"> <span></span>
 			<input placeholder="Password " type="password" name="userPassword"
 			required>
 
@@ -590,7 +608,7 @@ function Validate() {
 
 		<button class="pure-material-button-contained" type="submit">Sign
 			Up</button>
-
+<a href="index"><button type="button" class="btn btn-primary">Back</button></a>
 		<div class="done">
 			<h1>👌 You're all set!</h1>
 			<a class="pure-material-button-text"
@@ -600,7 +618,25 @@ function Validate() {
 			<progress class="pure-material-progress-circular" />
 		</div>
 	</form>
-
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#uname").change(function(){
+		$.ajax({
+			url : 'check_username',
+			data : {userName : $("#uname").val()},
+			success : function(data){
+				$("#ures").html(data);
+			}
+		});
+		
+	});
+});
+</script>
+ <script type = "text/javascript">
+   function preventBack(){window.history.forward();}
+    setTimeout("preventBack()", 0);
+    window.onunload=function(){null};
+</script>
 </body>
 
 </html>

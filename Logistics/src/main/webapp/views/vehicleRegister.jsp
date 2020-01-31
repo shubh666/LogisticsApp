@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+
 <!DOCTYPE html>
+
 <html>
 <head>
 <meta charset="UTF-8">
@@ -14,33 +18,7 @@
 
 <style>
 
-/* body {
-  animation: colorchange 50s;
-  -webkit-animation: colorchange 50s;
-  animation-iteration-count: infinite;
-}
 
-@keyframes colorchange{
-  0%{background-color:#45a3e5}
-  17%{background-color:#3cc}
-  34%{background-color:#66bf39}
-  51%{background-color:#ffa602}
-  61%{background-color:#eb670f}
-  84%{background-color:#f35}
-  90%{background-color:#864cbf}
-  100%{background-color:#45a3e5}
-}
-
-@-webkit-keyframes colorchange{
-  0%{background-color:#45a3e5}
-  17%{background-color:#3cc}
-  34%{background-color:#66bf39}
-  51%{background-color:#ffa602}
-  61%{background-color:#eb670f}
-  84%{background-color:#f35}
-  90%{background-color:#864cbf}
-  100%{background-color:#45a3e5}
-} */
 body {
     display: flex;
     align-items: center;
@@ -182,8 +160,87 @@ button {
     text-decoration: underline;
 }
 
-
+.error{
+		color:red;
+	  }
+	  
+	  .footer {
+    position: absolute;
+  font-size: 12px;
+    bottom: 0;
+    width: 90%;
+    height: 60px; /* Set the fixed height of the footer here */ 
+   
+    text-align: center;
+    a {
+        text-decoration: none;
+        color: inherit;
+       border-bottom: 1px solid;
+        &:hover {
+        border-bottom: 1px transparent;
+        }
+    }
+  }
+	  
+	  
 </style>
+	
+					<script type="text/javascript">
+					// JavaScript is used for toggling loading state
+					var form = document.querySelector('form');
+					form.onsubmit = function (event) {
+					    event.preventDefault();
+					    form.classList.add('signed');
+					};
+					
+					function InvalidNo(textbox) {
+
+						if (textbox.value === '') {
+							textbox.setCustomValidity('Your vehicle have different vehicle no!');
+						} else if (textbox.validity.typeMismatch) {
+							textbox.setCustomValidity('Enter vehicle no!');
+						} else {
+							textbox.setCustomValidity('');
+						}
+
+						return true;
+					}
+					
+					
+					function InvalidType(textbox) {
+
+						if (textbox.value === '') {
+							textbox.setCustomValidity('Mention vehicle type!');
+						} else if (textbox.validity.typeMismatch) {
+							textbox.setCustomValidity('Mention vehicle type!');
+						} else {
+							textbox.setCustomValidity('');
+						}
+
+						return true;
+					}
+					
+					
+					function InvalidCap(textbox) {
+
+						if (textbox.value === '') {
+							textbox.setCustomValidity('What is capacity of your vehicle!');
+						} else if (textbox.validity.typeMismatch) {
+							textbox.setCustomValidity('What is capacity of your vehicle!');
+						} else {
+							textbox.setCustomValidity('');
+						}
+
+						return true;
+					}
+					
+					
+					
+					</script>				
+				
+
+
+
 
 </head>
 
@@ -192,33 +249,44 @@ button {
 <body>
 		<c:if test="${sessionScope.uname == null}">
 					<c:redirect url="/"></c:redirect>
-			</c:if>
+		</c:if>
 	
 					
-		<form style="align-content: center;" class="registration" method="post" action="vehicleRegister">
-  <h1> Vehicle Registration!</h1>
-
+		<form:form style="align-content: center;" modelAttribute="vehicle" class="registration" method="post" action="vehicleRegister">
+		  <h1> Vehicle Registration!</h1>
+			
+		<%String str=(String)request.getAttribute("msg");
+		if(str!=null)
+		{
+		%>
+		<h6 style="color:red;"><%= str%></h6>
+		<%
+		}
+		%>
+			
 			<label class="pure-material-textfield-outlined">
     		 <span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;</span>
-     <input placeholder=" Vehicle No" name="vNo" type="text" required>
+     <input path="vNo" placeholder="Vehicle No" name="vNo" type="text" oninvalid="InvalidNo(this);" oninput="InvalidNo(this);" required="required">
+   	 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;<form:errors path="vNo" cssClass="error"></form:errors>
      
   </label>
   
   <label class="pure-material-textfield-outlined">
     	 <span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;</span>
-   <input
-							type="text" placeholder="Vehicle Type" name="vType"  type="text" required>
-     
+  
+ 		  <input path="vType"	type="text" placeholder="Vehicle Type" name="vType"  type="text"oninvalid="InvalidType(this);" oninput="InvalidType(this);" required="required" >			
+		<form:errors path="vType" cssClass="error"></form:errors>
+    
   </label>
   
-  
-  
-  
+   
 		
-  <label class="pure-material-textfield-outlined">
-     
+  <label class="pure-material-textfield-outlined">   
       <span>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</span>
-   <input type="text" placeholder="Load Capacity" name="loadCap"required>
+      
+   <input type="text" path="loadCap" placeholder="Load Capacity" name="loadCap" oninvalid="InvalidCap(this);" oninput="InvalidCap(this);" required="required">
+   <form:errors path="loadCap" cssClass="error"></form:errors>
+   
      
   </label>
   
@@ -227,47 +295,12 @@ button {
 						
 					<div class="btn-group">
 					<button type="submit" class="btn btn-primary" style="margin-right: 1cm">Submit</button>
-						<a href="vehicle"><button type="button" class="btn btn-primary">back</button></a>
+						<a href="vehicle"><button type="button" class="btn btn-primary">Back</button></a>
 				</div>
 				
 			
-				</form>
+				</form:form>
 				
 
 </body>
 </html>
-
-
-
-
-<!-- <div class="container-fluid">
-		<div class="row">
-			<div class="col-3"></div>
-			<div class="col-6">
-
-				<form method="post" action="vehicleRegister">
-				
-					<div class="form-group">
-						<label for="exampleInputPassword1">VehicleNO</label> 
-						<input
-							type="text" name="vNo" class="form-control" id="exampleInputPassword1">
-					</div>
-					
-					<div class="form-group">
-						<label for="exampleInputPassword1">Vehicle Type</label> 
-						<input
-							type="text" name="vType" class="form-control" id="exampleInputPassword1">
-					</div>
-				
-					<div class="form-group">
-						<label for="exampleInputPassword1">LoadCap</label> 
-						<input
-							type="text" name="loadCap" class="form-control" id="exampleInputPassword1">
-					</div>			
-					
-				<button type="submit" class="button">Submit</button>
-				</form>
-				<div><a href="vehicle"><button class="button">back</button></a></div>
-			</div>
-		</div>
-	</div> -->

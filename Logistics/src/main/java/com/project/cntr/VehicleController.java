@@ -1,8 +1,12 @@
 package com.project.cntr;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -45,12 +49,24 @@ public class VehicleController
 	}
 	
 	@PostMapping("/vehicleRegister")
-	public ModelAndView vehicleRegister(Vehicle vehicle) 
+	public ModelAndView vehicleRegister(@Valid@ModelAttribute("vehicle")Vehicle vehicle,BindingResult result) 
 	{	
-		System.out.println();
-		this.vehicleServ.vehiReg(vehicle);	
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("vehicleRegister");
+		if(result.hasErrors()) {
+			mv.setViewName("vehicleRegister");
+			return mv;
+		}
+		boolean register=this.vehicleServ.vehiReg(vehicle);
+		if(register)
+		{
+			mv.addObject("msg", "Vehicle Registered Successfully ");
+			mv.setViewName("vehicleRegister");
+		}
+		else
+		{
+			mv.addObject("msg", "Vehicle Not Registered");
+			mv.setViewName("vehicleRegister");
+		}
 		return mv;
 	}
 }

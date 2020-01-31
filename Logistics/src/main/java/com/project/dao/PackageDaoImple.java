@@ -24,8 +24,8 @@ public class PackageDaoImple implements PackageDao {
 	{
 			try 
 			{
-				String sql = "INSERT INTO package(packageweight,source,destination,amount) VALUES (?, ?, ?, ?)";
-				jdbcTemplate.update(sql, pkg.getPackageWeight(),pkg.getSorce(),pkg.getDestination(),pkg.getAmount());
+				String sql = "INSERT INTO package(packageid,packageweight,source,destination,amount) VALUES (?,?, ?, ?, ?)";
+				jdbcTemplate.update(sql, (int)pkg.getPackageId(),pkg.getPackageWeight(),pkg.getSorce(),pkg.getDestination(),pkg.getAmount());
 				return true;
 			}
 			catch(Exception e) 
@@ -178,11 +178,7 @@ public class PackageDaoImple implements PackageDao {
 	public boolean changeDelivered(Package pkg) 
 	{
 		try 
-		{
-			/*
-			 * String sql = "INSERT INTO delivered VALUES (?,now())";
-			 * jdbcTemplate.update(sql, pkg.getPackageId());
-			 */			
+		{			
 			String str="Delivered";
 			String sql2= "update package set status = ? ,deliveryDate=now() where packageId = ?";
 			String sql3= "update vehicle set status = 'Available' where vehicleno = ?";

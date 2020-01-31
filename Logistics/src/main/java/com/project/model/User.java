@@ -6,7 +6,7 @@ public class User {
 	private String userPassword;
 	private String userName;
 	private String emailId;
-	private int phone;
+	private String phone;
 	
 	public int getUserId() {
 		return userId;
@@ -32,10 +32,10 @@ public class User {
 	public void setEmailId(String emailId) {
 		this.emailId = emailId;
 	}
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 	

@@ -189,8 +189,17 @@ nav ul li a:hover {
 	margin: 4px 2px;
 	cursor: pointer;
 }
-</style>
 
+
+
+
+</style>
+<script type="text/javascript">
+$(window).on("load resize ", function() {
+	  var scrollWidth = $('.tbl-content').width() - $('.tbl-content table').width();
+	  $('.tbl-header').css({'padding-right':scrollWidth});
+	}).resize();
+</script>
 
 
 </head>
@@ -204,13 +213,14 @@ nav ul li a:hover {
 		<c:redirect url="/"></c:redirect>
 	</c:if>
 	<section> <nav>
-	<ul>
-		<li><a href="#">Home</a></li>
-		<li><a href="#">About</a></li>
-		<li><a href="#">Services</a></li>
-		<li><a href="#">Contact</a></li>
-		<li><a href="logout">logout</a></li>
-	</ul>
+		<ul>
+			<li><a href="home">Home</a></li>
+			<li><a href="about">About</a></li>
+			<li><a href="contact">Contact Us</a></li>
+			<li><a href="logout">logout</a></li>
+		</ul>
+	</nav>
+
 	</nav> <!--for demo wrap-->
 	<h1>Package</h1>
 	<div class="tbl-header">

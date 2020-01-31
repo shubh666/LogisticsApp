@@ -206,6 +206,26 @@ input:focus {
 	box-shadow: inset 0 -5px 45px rgba(100, 100, 100, 0.4), 0 1px 1px
 		rgba(255, 255, 255, 0.2);
 }
+
+
+.footer {
+    position: absolute;
+  font-size: 12px;
+  color:white;
+    bottom: 0;
+    width: 90%;
+    height: 60px; /* Set the fixed height of the footer here */ 
+   
+    text-align: center;
+    a {
+        text-decoration: none;
+        color: inherit;
+       border-bottom: 1px solid;
+        &:hover {
+        border-bottom: 1px transparent;
+        }
+    }
+  }
 </style>
 
 
@@ -243,52 +263,18 @@ input:focus {
 <body style="background-color: gray;">
 
 
-	<!-- <div class="container-fluid" >
-		<div class="row">
-			<div class="col-3"></div>
-			
-			
-			<div class="col-6" style="display:grid; align-content:center; justify-content: center; margin-top:3cm; background-color: white;">
-			
-				<form  action="vuser" method="post">
-				
-					<div class="form-group">
-						<label for="exampleInputPassword1">UserId</label> 
-						<input
-							type="text" name="userName" class="form-control" id="exampleInputPassword1">
-					</div>
-					
-					
-					<div class="form-group">
-						<label for="exampleInputPassword1">Password</label> 
-						<input
-							type="password" name="userPassword" class="form-control" id="exampleInputPassword1">
-					</div>
-					
-					
-					<button type="submit" class="btn btn-primary" >LOGIN</button>
-					
-					<a href="register"><input type="button" value="Register" class="btn btn-primary"></a>
-					
-				</form>
-				
-			</div>
-			<div class="col-3"></div>
-		</div>
-	</div> -->
-
-
-
 	<div class="login">
 		<h1>Login</h1>
 		<form action="/" method="post" name="myform">
 
-			<h1>${msg}</h1>
-
-
-
-			<!-- 	<input type="text" name="userName" placeholder="Username" required="required" /> -->
-
+		<%String str=(String)request.getAttribute("msg");
+		if(str!=null)
+		{
+		%>
+		<h6 style="color:red;"><%= str%></h6>
+		<%
+		}
+		%>
 
 			<input id="email" oninvalid="InvalidMsg(this);" placeholder="user id"
 				oninput="InvalidMsg(this);" name="userName" type="text"
@@ -310,6 +296,19 @@ input:focus {
 				class="btn btn-primary btn-block btn-large"></a>
 		</form>
 	</div>
+	
+	
+	<footer class="footer">
+
+    <!-- Copyright -->
+    <!-- ❤️  -->
+    <div class="footer-copyright text-center">&copy; Developed <i class="fas fa-heart" aria-hidden="true"></i> by
+        Group 16
+    </div>
+    <!-- Copyright -->
+
+</footer>
+<!-- Footer ends-->
 
 </body>
 </html>

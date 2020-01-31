@@ -34,9 +34,16 @@ public class HomeController {
 	@GetMapping("/")
 	public ModelAndView signinPage() 
 	{
-		ModelAndView mv = new ModelAndView();	
-	    mv.setViewName("index");
-		return mv;
+		ModelAndView mv = new ModelAndView();
+		if(session.getAttribute("uname")!=null)
+		{
+			mv.setViewName("home");
+		}
+		else
+		{
+			mv.setViewName("index");
+		}
+			return mv;
 	}
 	
 	@PostMapping("/")
@@ -48,12 +55,10 @@ public class HomeController {
 			if(auth) {
 				session.setAttribute("uname",user.getUserName());
 				session.setAttribute("uPassword",user.getUserPassword());
-				mv.addObject("msg","msg");
 				mv.setViewName("home");
 			} else {
-				//String str="Enter Valid Credentials";
-				mv.addObject("msg","msg");
 				
+				mv.addObject("msg","Invalid UserName and Password");			
 				mv.setViewName("index");
 				return mv;
 			}
@@ -207,4 +212,21 @@ public class HomeController {
 		}
 		return mv;
 	}
+	
+	@GetMapping("/contact")
+	public ModelAndView contactPage() 
+	{
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("contact");	
+		return mv;
+	}
+	
+	@GetMapping("/about")
+	public ModelAndView aboutPage() 
+	{
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("about");	
+		return mv;
+	}
+	
 }

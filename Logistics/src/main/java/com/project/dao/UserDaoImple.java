@@ -25,25 +25,32 @@ public class UserDaoImple implements UserDao {
 	@Override
 	public boolean login(User user) {
 		
-		String sql="select * from user where username=? and aes_decrypt(password,'mypassword') = ?";
-		System.out.print(sql);
-		User u=jdbcTemplate.queryForObject(sql, new Object[] {user.getUserName(),user.getUserPassword()}, new RowMapper<User>() {
-
-			@Override
-			public User mapRow(ResultSet rs, int rowNum) throws SQLException {
-				User p=new User();
-				p.setUserName(rs.getString(2));
-				p.setUserPassword(rs.getString(3));
-				return p;
-			}
+		try
+		{
+			String sql="select * from user where username=? and aes_decrypt(password,'mypassword') = ?";
 			
-		});
-		if(u==null)
+			User u=jdbcTemplate.queryForObject(sql, new Object[] {user.getUserName(),user.getUserPassword()}, new RowMapper<User>() {
+
+				@Override
+				public User mapRow(ResultSet rs, int rowNum) throws SQLException {
+					User p=new User();
+					p.setUserName(rs.getString(2));
+					p.setUserPassword(rs.getString(3));
+					return p;
+				}
+			
+			});
+			if(u==null)
+			{
+				return false;
+			}
+		
+			return true;
+		}
+		catch(Exception e)
 		{
 			return false;
 		}
-		
-		return true;
 	}
 
 	@Override

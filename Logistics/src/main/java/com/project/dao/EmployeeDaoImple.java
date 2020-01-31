@@ -24,8 +24,8 @@ public class EmployeeDaoImple implements EmployeeDao
 	{
 		try 
 		{
-			String sql = "INSERT INTO employee(employeeName,employeePhone,employeedoj,employeeSalary,employeeLicense,deptid) VALUES (?, ?, ?, ?, ?, ?)";
-			jdbcTemplate.update(sql, emp.getEmployeeName(),emp.getEmployeePhone(),emp.getEmployeeDoj(),emp.getEmployeeSalary(),emp.getEmployeeLicense(),emp.getDepartmentId());
+			String sql = "INSERT INTO employee(employeeName,employeePhone,employeedoj,employeeSalary,employeeLicense,deptName) VALUES (?, ?, ?, ?, ?, ?)";
+			jdbcTemplate.update(sql, emp.getEmployeeName(),emp.getEmployeePhone(),emp.getEmployeeDoj(),emp.getEmployeeSalary(),emp.getEmployeeLicense(),emp.getDeptName());
 			return true;				
 		}
 		catch(Exception e) 
@@ -52,8 +52,10 @@ public class EmployeeDaoImple implements EmployeeDao
 				emp.setEmployeeDoj(rs.getString(4));
 				emp.setEmployeeSalary(rs.getString(5));
 				emp.setEmployeeLicense(rs.getString(6));
-				emp.setDepartmentId(rs.getInt(7));
-				emp.setStatus(rs.getString(8));
+				
+				emp.setStatus(rs.getString(7));
+				
+				emp.setDeptName(rs.getString(8));
 				return emp;
 			}
 		});
@@ -94,8 +96,8 @@ public class EmployeeDaoImple implements EmployeeDao
 				emp.setEmployeeDoj(rs.getString(4));
 				emp.setEmployeeSalary(rs.getString(5));
 				emp.setEmployeeLicense(rs.getString(6));
-				emp.setDepartmentId(rs.getInt(7));
-				emp.setStatus(rs.getString(8));
+				emp.setDeptName(rs.getString(8));
+				emp.setStatus(rs.getString(7));
 				return emp;
 			}
 		});
@@ -108,8 +110,8 @@ public class EmployeeDaoImple implements EmployeeDao
 	{	 
 		try 
 		{		
-			String sql = "update employee set employeeName=?,  employeePhone=?,employeeSalary=?,employeeLicense=?,deptid=? where employeeid=? ";
-			jdbcTemplate.update(sql, emp.getEmployeeName() , emp.getEmployeePhone() , emp.getEmployeeSalary(), emp.getEmployeeLicense() , emp.getDepartmentId() ,emp.getEmployeeId());
+			String sql = "update employee set employeeName=?,  employeePhone=?,employeeSalary=?,employeeLicense=?,deptName=? where employeeid=? ";
+			jdbcTemplate.update(sql, emp.getEmployeeName() , emp.getEmployeePhone() , emp.getEmployeeSalary(), emp.getEmployeeLicense() , emp.getDeptName() ,emp.getEmployeeId());
 			return true;		
 		}
 		catch(Exception e) 
